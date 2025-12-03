@@ -2,32 +2,31 @@
 /**
  * Décrivez votre classe Desserts ici.
  *
- * @author (votre nom)
+ * @Rend A.
  * @version (un numéro de version ou une date)
  */
 public class Desserts extends Recipes
 {
-    // variables d'instance - remplacez l'exemple qui suit par le vôtre
-    private int x;
+   private int sweetnesslevel;
 
-    /**
-     * Constructeur d'objets de classe Desserts
+   /**
+     * Constructor for objects of class Dessert
      */
     public Desserts()
     {
-        // initialisation des variables d'instance
-        x = 0;
+        // initialise instance variables
+        
     }
 
-    /**
-     * Un exemple de méthode - remplacez ce commentaire par le vôtre
+   /**
+     * An example of a method - replace this comment with your own
      *
-     * @param  y   le paramètre de la méthode
-     * @return     la somme de x et de y
+     * @param  y  a sample parameter for a method
+     * @return    the sum of x and y
      */
-    public int sampleMethod(int y)
+    public void listSugarBased()
     {
-        // Insérez votre code ici
-        return x + y;
+        // put your code here
+        
     }
 }

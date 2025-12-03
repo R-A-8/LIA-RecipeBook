@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * Write a description of class RecipeBook here.
  *
- * @author (your name)
+ * @Rend A.
  * @version (a version number or a date)
  */
 public class RecipeBook
@@ -22,6 +22,8 @@ public class RecipeBook
     private ArrayList<Recipes> recipes = new ArrayList<>();
     
     private int ratings = 0;
+    
+    private Recipes recipe = new Recipes();
 
     /**
      * Constructor for objects of class RecipeBook
@@ -99,25 +101,4 @@ public class RecipeBook
         
     }
     
-    public boolean addRating(int rating)
-    {
-        if(ratingInvalid(rating)) {  // reject invalid ratings
-            return false;
-        }
-        return true;
-    }//From online-shop-JUnit
-    
-    private boolean ratingInvalid(int rating)
-    {
-        return rating < 0 || rating > 5;
-    } //From online-shop-JUnit
-    
-    public void listHighestRated()
-    {
-        
-    }
-    
-    public void listByRating(){
-        //Idk if we need this. Maybe a lowestRated 
-    }
 }

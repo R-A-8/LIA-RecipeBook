@@ -42,4 +42,26 @@ public class Recipes
         
     }
     
+    
+    public boolean addRating(int rating)
+    {
+        if(ratingInvalid(rating)) {  // reject invalid ratings
+            return false;
+        }
+        return true;
+    }//From online-shop-JUnit
+    
+    private boolean ratingInvalid(int rating)
+    {
+        return rating < 0 || rating > 5;
+    } //From online-shop-JUnit
+    
+    public void listHighestRated()
+    {
+        
+    }
+    
+    public void listByRating(){
+        //Idk if we need this. Maybe a lowestRated 
+    }
 }

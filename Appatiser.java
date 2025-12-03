@@ -1,20 +1,15 @@
 
-/**
- * Write a description of class MainDish here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class MainDish extends Recipes
+public class Appatiser extends Recipes
 {
     // instance variables - replace the example below with your own
-    private int spiceLevel;
+    private int flavorLevel;
+    private boolean isGlutenFree;
     private boolean isVegetarian;
 
     /**
-     * Constructor for objects of class MainDish
+     * Constructor for objects of class appatisers
      */
-    public MainDish()
+    public Appatiser()
     {
         // initialise instance variables
     }
@@ -25,13 +20,9 @@ public class MainDish extends Recipes
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public void listProtein()
+    public void listFlavor()
     {
         
     }
-    
-    public void listSpicy()
-    {
-        
-    }
+
 }
