@@ -16,6 +16,8 @@ public class Recipes
     
     private ArrayList stepList;
     
+    private int test;
+    
     public Recipes()
     {
         ingredientsList = new HashSet<String>();
