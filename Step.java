@@ -6,19 +6,21 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Steps
+public class Step
 {
     // instance variables - replace the example below with your own
-    private int duration;
-    private ArrayList stepList;
+    public String instruction;
+    
+    public int duration;
+    private ArrayList listOfSteps;
     
     /**
      * Constructor for objects of class Steps
      */
-    public Steps()
+    public Step(String instruction, int duration)
     {
         // initialise instance variables
-        stepList = new ArrayList<String>();
+        listOfSteps = new ArrayList<String>();
         
     }
 
@@ -28,19 +30,13 @@ public class Steps
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public void addSteps()
-    {
-        // put your code here
-        
-    }
     
-    public void removeSteps()
-    {
-        
-    }
     
     public void listAllSteps()
     {
-        
+        for(int i = 0; i > listOfSteps.size(); i++)
+        {
+            System.out.print(listOfSteps.get(i));
+        }
     }
 }

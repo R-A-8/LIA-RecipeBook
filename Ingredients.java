@@ -15,12 +15,12 @@ public class Ingredients
     private String color;
     private HashSet<String> inList;
     
-    private HashMap<String, String> ingredients = new HashMap<>();
+    //private HashMap<String, String> ingredients = new HashMap<>();
 
     /**
      * Constructor for objects of class Ingredients
      */
-    public Ingredients()
+    public Ingredients(String name)
     {
         inList = new HashSet<>();
     } 
@@ -31,21 +31,18 @@ public class Ingredients
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public void addIngredients(String ingredient, String number)
-    {
-        ingredients.put(ingredient, number); 
-        //number of that specific ingredient to use in the recipe (e.g.: "4", "eggs");
-    }
+    //public void addIngredients(String ingredient, String number)
+    //{
+    //    ingredients.put(ingredient, number); 
+    //    //number of that specific ingredient to use in the recipe (e.g.: "4", "eggs");
+    //}
     
-    public void removeIngredients(String ingredient)
-    {
-        if(ingredient.equals(ingredients)){
-            ingredients.remove(ingredients);
-        }
-    }
+    //public void removeIngredients(String ingredient)
+    //{
+    //   if(ingredient.equals(ingredients)){
+    //        ingredients.remove(ingredients);
+    //    }
+    //}
     
-    public void printAllRecipes()
-    {
-        System.out.println(ingredients);
-    }
+    
 }

@@ -23,7 +23,7 @@ public class RecipeBook
     
     private int ratings = 0;
     
-    private Recipes recipe = new Recipes();
+    //private Recipes recipe = new Recipes();
 
     /**
      * Constructor for objects of class RecipeBook

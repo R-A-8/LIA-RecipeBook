@@ -10,38 +10,58 @@ import java.util.HashSet;
  */
 public class Recipes
 {
+    //SIMPLE FEILDS
     private String name;
+    private int duration;
     
+    private int rating;
+    
+    private int votes;
+    //LISTS
     private HashSet ingredientsList;
-    
     private ArrayList stepList;
+    private HashMap<String, String> ingredients = new HashMap<>();
     
-    private int test;
+    //OBJECTS
+    private Step step;
     
-    public Recipes()
+    
+    public Recipes(String name)
     {
-        ingredientsList = new HashSet<String>();
-        stepList = new ArrayList<String>();
+        //list initialization
+        ingredientsList = new HashSet<Ingredients>();
+        stepList = new ArrayList<Step>();
+        
+        //step = new Step();
     }
     
-    public void addSteps()
+    public void addSteps(String instruction, int duration)
     {
+        
+        //add new Object to ArrayList stepList
+        stepList.add(new Step(instruction, duration));
         
     }
     
-    public void removeSteps()
+    public void removeSteps(int number)
     {
-        
+        //removes the step
+        stepList.remove(number);
     }
     
-    public void addIngredients()
+    public void addIngredients(String name)
     {
-        
+        ingredientsList.add(new Ingredients(name));
+        //my bad for stealing like everything even text down there |
+        //                                                        \ /
+        //number of that specific ingredient to use in the recipe (e.g.: "4", "eggs");
     }
     
-    public void removeIngredient()
+    public void removeIngredients(String number, String ingredient)
     {
-        
+        if(ingredient.equals(ingredients)){
+            ingredients.remove(ingredient);
+        }
     }
     
     
@@ -58,12 +78,18 @@ public class Recipes
         return rating < 0 || rating > 5;
     } //From online-shop-JUnit
     
-    public void listHighestRated()
+    public int getRating()
     {
-        
+        return rating;
     }
     
-    public void listByRating(){
-        //Idk if we need this. Maybe a lowestRated 
+    public void listHighestRated()
+    {
+        //New idea: change Rating to Votes like in the lab
+    }
+    
+    public void listByRating()
+    {
+        //Idk if we need this. Maybe a lowestRated
     }
 }
