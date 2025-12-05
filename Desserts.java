@@ -42,6 +42,5 @@ public class Desserts extends Recipes
       else if(sweetnessLevel > 5 && sweetnessLevel < 10){
           System.out.println("Very sweet!");
       }
-      
    }
 }

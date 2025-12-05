@@ -21,9 +21,11 @@ public class RecipeBook
     
     private ArrayList<Recipes> recipes = new ArrayList<>();
     
-    private int ratings = 0;
     
     private Recipes recipe = new Recipes();
+    
+    
+    
 
     /**
      * Constructor for objects of class RecipeBook
@@ -48,6 +50,7 @@ public class RecipeBook
         System.out.println("First edition.");
         System.out.println("To pick a recipe, choose a type: Appetizers, Main Dishes or Desserts.");
         System.out.println("To close the book, write 'close'.");
+        
     }//Ready to write pseudocode
     
     public void addRecipes(Recipes recipeToAdd)
@@ -86,20 +89,38 @@ public class RecipeBook
         System.out.println(recipes);
     }
     
-    public void listDessert()
+    public ArrayList<Recipes> listDessert()
     {
-        
+        ArrayList<Recipes> ds = new ArrayList<>();
+        for(Recipes recipe : recipes){
+            if(recipe instanceof Desserts){
+                ds.add(recipe);
+            }
+        }
+        return ds;
     }
     
-    public void listMainDishs()
+    public ArrayList<Recipes> listApps()
     {
-        
+        ArrayList<Recipes> apps = new ArrayList<>();
+        for(Recipes recipe : recipes){
+            if(recipe instanceof Appatiser){
+                apps.add(recipe);
+            }
+        }
+        return apps;
     }
     
-    public void listAppetisers()
+    public ArrayList<Recipes> listMainDish()
     {
-        
+        ArrayList<Recipes> mD = new ArrayList<>();
+        for(Recipes recipe : recipes){
+            if(recipe instanceof MainDish){
+                mD.add(recipe);
+            }
+        }
+        return mD;
     }
     
-    //I don't think the last 3 are necessary
+   
 }

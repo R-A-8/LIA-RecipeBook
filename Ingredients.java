@@ -1,5 +1,5 @@
 import java.util.HashSet;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * Write a description of class Ingredients here.
@@ -10,19 +10,23 @@ import java.util.HashMap;
 public class Ingredients
 {
     // instance variables - replace the example below with your own
+    private String name;
+    private int amount;
+    private int scaling;
     
-    private String textureLevel;
-    private String color;
     private HashSet<String> inList;
     
-    private HashMap<String, String> ingredients = new HashMap<>();
+    private ArrayList<Ingredients> ingredients = new ArrayList<>();
 
     /**
      * Constructor for objects of class Ingredients
      */
-    public Ingredients()
+    public Ingredients(String name, int amount)
     {
-        inList = new HashSet<>();
+        this.name = name;
+        this.amount = amount;
+        
+        //inList = new HashSet<>();
     } 
 
     /**
@@ -31,20 +35,29 @@ public class Ingredients
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public void addIngredients(String ingredient, String number)
+    public void addIngredients(Ingredients ingredientToAdd)
     {
-        ingredients.put(ingredient, number); 
-        //number of that specific ingredient to use in the recipe (e.g.: "4", "eggs");
+        ingredients.add(ingredientToAdd);
     }
     
-    public void removeIngredients(String ingredient)
+    public void removeIngredients(Ingredients ingredientToRemove)
     {
-        if(ingredient.equals(ingredients)){
-            ingredients.remove(ingredients);
+        for(Ingredients ingredient : ingredients){
+            if(ingredientToRemove.equals(ingredient)){
+                ingredients.remove(ingredient);
+            }
         }
     }
     
-    public void printAllRecipes()
+    public int scaleIngredients(int scale){
+        //e.g.: the recipe serves 3 people, so we need 3 carrots, but the user wants to 
+        //serve 5 people. Therefore, the carrots need to be scaled.
+
+        amount = amount*scale;
+        return amount;
+    }
+    
+    public void printIngredients()
     {
         System.out.println(ingredients);
     }

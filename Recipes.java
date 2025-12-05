@@ -34,7 +34,7 @@ public class Recipes
         
     }
     
-    public void addIngredients()
+    public void addIngredients(Ingredients ingredient)
     {
         
     }
