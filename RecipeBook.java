@@ -140,7 +140,7 @@ public class RecipeBook
     {
         ArrayList<Recipes> apps = new ArrayList<>();
         for(Recipes recipe : recipes){
-            if(recipe instanceof Appatiser){
+            if(recipe instanceof Appetizer){
                 apps.add(recipe);
             }
         }

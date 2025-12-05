@@ -1,5 +1,5 @@
 
-public class Appatiser extends Recipes
+public class Appetizer extends Recipes
 {
     // instance variables - replace the example below with your own
     private int flavorLevel;
@@ -12,7 +12,7 @@ public class Appatiser extends Recipes
     /**
      * Constructor for objects of class appatisers
      */
-    public Appatiser(String name, String type, int flaverLvl)
+    public Appetizer(String name, String type, int flaverLvl)
     {
         super(name);
         flaverLvl = flavorLevel;
