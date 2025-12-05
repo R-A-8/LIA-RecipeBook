@@ -13,6 +13,7 @@ public class Recipes
     //SIMPLE FEILDS
     private String name;
     private int duration;
+    private String type;
     
     private int rating;
     
@@ -26,7 +27,7 @@ public class Recipes
     private Step step;
     
     
-    public Recipes(String name)
+    public Recipes(String name, String type)
     {
         //list initialization
         ingredientsList = new HashSet<Ingredients>();
@@ -59,7 +60,8 @@ public class Recipes
     
     public void removeIngredients(String number, String ingredient)
     {
-        if(ingredient.equals(ingredients)){
+        if(ingredient.equals(ingredients))
+        {
             ingredients.remove(ingredient);
         }
     }
@@ -83,13 +85,19 @@ public class Recipes
         return rating;
     }
     
-    public void listHighestRated()
+    public void increaseVote()
     {
-        //New idea: change Rating to Votes like in the lab
+        votes++;
     }
     
-    public void listByRating()
+    public void decreaseVote()
     {
-        //Idk if we need this. Maybe a lowestRated
+        votes--;
     }
+    
+    public int getVotes()
+    {
+        return votes;
+    }
+    
 }

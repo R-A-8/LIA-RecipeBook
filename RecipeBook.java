@@ -10,7 +10,6 @@ public class RecipeBook
 {
     // instance variables - replace the example below with your own
     
-    
     private String author;
     
     private String publishingCompanyName;
@@ -50,9 +49,10 @@ public class RecipeBook
         System.out.println("To close the book, write 'close'.");
     }//Ready to write pseudocode
     
-    public void addRecipes(Recipes recipeToAdd)
+    public void addRecipes(String name, String type)
     {
-        recipes.add(recipeToAdd);
+        
+        recipes.add(new Recipes(name, type));
     }//Ready to write pseudocode
     
     public void removeRecipes(Recipes recipeToRemove)
@@ -84,6 +84,43 @@ public class RecipeBook
     public void printAllRecipes()
     {
         System.out.println(recipes);
+    }
+    
+    //Voting system below:
+    public void addVote(Recipes recipe)
+    {
+        recipe.increaseVote();
+    }
+    
+    public void removeVote(Recipes recipe)
+    {
+        recipe.decreaseVote();
+    }
+    
+    public Recipes getHighestVoted()
+    {
+        int recipeId = 0;
+        if(recipes.size() == 0)
+        {
+            return null;
+        }
+        Recipes highestVoted = recipes.get(recipeId);
+        
+        recipeId++;
+        
+        while(recipeId < recipes.size())
+        {
+            Recipes currentRecipe = recipes.get(recipeId);
+            if(currentRecipe.getVotes() > highestVoted.getVotes())
+            {
+                highestVoted = currentRecipe;
+            }
+            
+            recipeId++;
+        }
+        
+        return highestVoted;
+        
     }
     
     public void listDessert()

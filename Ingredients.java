@@ -10,6 +10,7 @@ import java.util.HashMap;
 public class Ingredients
 {
     // instance variables - replace the example below with your own
+    private String name;
     
     private String textureLevel;
     private String color;

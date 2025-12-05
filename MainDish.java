@@ -10,13 +10,21 @@ public class MainDish extends Recipes
     // instance variables - replace the example below with your own
     private int spiceLevel;
     private boolean isVegetarian;
+    
+    private String name;
+    
+    private 
+    
 
     /**
      * Constructor for objects of class MainDish
      */
-    public MainDish()
+    public MainDish(String name, String type)
     {
         // initialise instance variables
+        super(name, type);
+        
+        
     }
 
     /**

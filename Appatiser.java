@@ -3,15 +3,20 @@ public class Appatiser extends Recipes
 {
     // instance variables - replace the example below with your own
     private int flavorLevel;
+    
+    private String name;
+    
     private boolean isGlutenFree;
     private boolean isVegetarian;
 
     /**
      * Constructor for objects of class appatisers
      */
-    public Appatiser()
+    public Appatiser(String name, String type, int flaverLvl)
     {
-        // initialise instance variables
+        super(name, type);
+        flaverLvl = flavorLevel;
+        
     }
 
     /**
@@ -20,7 +25,7 @@ public class Appatiser extends Recipes
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public void listFlavor()
+    public void listFlavor(int flavorLvl)
     {
         
     }
