@@ -45,5 +45,24 @@ public void addRecipes(Recipes recipeToAdd)
 
 Desserts pseudocode(Rend)
 
+public void giveSweetnessLevel(){
+      If the sweetnessLevel(inputed in the constructor) is less than 5(and higher than 0), print "Almost bitter."
+      If the sweetnessLevel is 5 instead print "Moderately sweet."
+      If the sweetnessLevel is higher than 5(and less than 10) instead print "Very sweet!"
+   }
+
 Ingredients pseudocode(Rend)    
+ public void addIngredients(String ingredient, String number)
+    {
+        input the ingredient name of type String and the amount of that ingredient(also of type String) and add them to the ingredients HashMap.
+    }
+    
+    public void removeIngredients(String ingredient)
+    {
+        if(ingredient.equals(ingredients)){
+            ingredients.remove(ingredients);
+        }
+    }
+
+
     

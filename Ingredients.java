@@ -13,7 +13,7 @@ public class Ingredients
     
     private String textureLevel;
     private String color;
-    private HashSet inList;
+    private HashSet<String> inList;
     
     private HashMap<String, String> ingredients = new HashMap<>();
 
@@ -22,8 +22,8 @@ public class Ingredients
      */
     public Ingredients()
     {
-        inList = new HashSet<String>();
-    }
+        inList = new HashSet<>();
+    } 
 
     /**
      * An example of a method - replace this comment with your own
@@ -31,16 +31,21 @@ public class Ingredients
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public void addIngredients(String number, String ingredient)
+    public void addIngredients(String ingredient, String number)
     {
-        ingredients.put(number, ingredient); 
+        ingredients.put(ingredient, number); 
         //number of that specific ingredient to use in the recipe (e.g.: "4", "eggs");
     }
     
-    public void removeIngredients(String number, String ingredient)
+    public void removeIngredients(String ingredient)
     {
         if(ingredient.equals(ingredients)){
-            ingredients.remove(ingredient);
+            ingredients.remove(ingredients);
         }
+    }
+    
+    public void printAllRecipes()
+    {
+        System.out.println(ingredients);
     }
 }

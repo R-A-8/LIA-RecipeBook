@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * Décrivez votre classe Desserts ici.
@@ -7,14 +8,15 @@
  */
 public class Desserts extends Recipes
 {
-   private int sweetnesslevel;
+   private int sweetnessLevel;
+   
 
    /**
-     * Constructor for objects of class Dessert
+     * Constructor for objects of class Desserts
      */
-    public Desserts()
+    public Desserts(int sweetnessLevel)
     {
-        // initialise instance variables
+        this.sweetnessLevel = sweetnessLevel;
         
     }
 
@@ -26,7 +28,20 @@ public class Desserts extends Recipes
      */
     public void listSugarBased()
     {
-        // put your code here
+        //tbd
         
     }
+    
+   public void giveSweetnessLevel(){
+      if(sweetnessLevel< 5){
+          System.out.println("Almost bitter.");
+      }
+      else if(sweetnessLevel == 5){
+          System.out.println("Moderately sweet.");
+      }
+      else if(sweetnessLevel > 5 && sweetnessLevel < 10){
+          System.out.println("Very sweet!");
+      }
+      
+   }
 }

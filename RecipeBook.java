@@ -44,7 +44,7 @@ public class RecipeBook
        public void bookDetails(){
         System.out.println("This book was written by " + author);
         System.out.println("Published in 2025 by " + publishingCompanyName);
-        System.out.println("Contains " + numberOfPages + " pages and " + publishingCompanyName + " sections.");
+        System.out.println("Contains " + numberOfPages + " pages and " + numberOfSections + " sections.");
         System.out.println("First edition.");
         System.out.println("To pick a recipe, choose a type: Appetizers, Main Dishes or Desserts.");
         System.out.println("To close the book, write 'close'.");
@@ -55,7 +55,7 @@ public class RecipeBook
         recipes.add(recipeToAdd);
     }//Ready to write pseudocode
     
-    public void removeRecipe(Recipes recipeToRemove)
+    public void removeRecipes(Recipes recipeToRemove)
     {
         for(Recipes recipe :  recipes){
             if(recipeToRemove.equals(recipe)){
@@ -72,11 +72,6 @@ public class RecipeBook
         return index;
     }//Ready to write pseudocode
     
-    public void getRecipeName(Recipes recipeName)
-    {
-        //Don't think we need this one...It's the same as searchRecipeName
-    }
-    
     public void searchRecipeName(Recipes recipeName)
     {
         for(Recipes recipe :  recipes){
@@ -84,6 +79,11 @@ public class RecipeBook
                 System.out.println(recipe);
             }
         }
+    }
+    
+    public void printAllRecipes()
+    {
+        System.out.println(recipes);
     }
     
     public void listDessert()
@@ -101,4 +101,5 @@ public class RecipeBook
         
     }
     
+    //I don't think the last 3 are necessary
 }
