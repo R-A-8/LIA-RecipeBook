@@ -10,7 +10,6 @@ public class RecipeBook
 {
     // instance variables - replace the example below with your own
     
-    
     private String author;
     
     private String publishingCompanyName;
@@ -22,10 +21,14 @@ public class RecipeBook
     private ArrayList<Recipes> recipes = new ArrayList<>();
     
     
+<<<<<<< HEAD
     private Recipes recipe = new Recipes();
     
     
     
+=======
+    //private Recipes recipe = new Recipes();
+>>>>>>> 14d2c2dfd79542d2183abf33756819713198f6c2
 
     /**
      * Constructor for objects of class RecipeBook
@@ -53,9 +56,10 @@ public class RecipeBook
         
     }//Ready to write pseudocode
     
-    public void addRecipes(Recipes recipeToAdd)
+    public void addRecipes(String name, String type)
     {
-        recipes.add(recipeToAdd);
+        
+        recipes.add(new Recipes(name, type));
     }//Ready to write pseudocode
     
     public void removeRecipes(Recipes recipeToRemove)
@@ -89,7 +93,48 @@ public class RecipeBook
         System.out.println(recipes);
     }
     
+<<<<<<< HEAD
     public ArrayList<Recipes> listDessert()
+=======
+    //Voting system below:
+    public void addVote(Recipes recipe)
+    {
+        recipe.increaseVote();
+    }
+    
+    public void removeVote(Recipes recipe)
+    {
+        recipe.decreaseVote();
+    }
+    
+    public Recipes getHighestVoted()
+    {
+        int recipeId = 0;
+        if(recipes.size() == 0)
+        {
+            return null;
+        }
+        Recipes highestVoted = recipes.get(recipeId);
+        
+        recipeId++;
+        
+        while(recipeId < recipes.size())
+        {
+            Recipes currentRecipe = recipes.get(recipeId);
+            if(currentRecipe.getVotes() > highestVoted.getVotes())
+            {
+                highestVoted = currentRecipe;
+            }
+            
+            recipeId++;
+        }
+        
+        return highestVoted;
+        
+    }
+    
+    public void listDessert()
+>>>>>>> 14d2c2dfd79542d2183abf33756819713198f6c2
     {
         ArrayList<Recipes> ds = new ArrayList<>();
         for(Recipes recipe : recipes){

@@ -16,12 +16,20 @@ public class Ingredients
     
     private HashSet<String> inList;
     
+
     private ArrayList<Ingredients> ingredients = new ArrayList<>();
+
+    //private HashMap<String, String> ingredients = new HashMap<>();
+
 
     /**
      * Constructor for objects of class Ingredients
      */
+
+
+
     public Ingredients(String name, int amount)
+
     {
         this.name = name;
         this.amount = amount;
@@ -35,11 +43,14 @@ public class Ingredients
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
+
     public void addIngredients(Ingredients ingredientToAdd)
     {
         ingredients.add(ingredientToAdd);
     }
-    
+
+ 
+
     public void removeIngredients(Ingredients ingredientToRemove)
     {
         for(Ingredients ingredient : ingredients){
@@ -49,6 +60,8 @@ public class Ingredients
         }
     }
     
+
+
     public int scaleIngredients(int scale){
         //e.g.: the recipe serves 3 people, so we need 3 carrots, but the user wants to 
         //serve 5 people. Therefore, the carrots need to be scaled.
@@ -61,4 +74,5 @@ public class Ingredients
     {
         System.out.println(ingredients);
     }
+
 }

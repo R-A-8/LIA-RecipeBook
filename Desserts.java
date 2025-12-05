@@ -14,8 +14,10 @@ public class Desserts extends Recipes
    /**
      * Constructor for objects of class Desserts
      */
-    public Desserts(int sweetnessLevel)
+    public Desserts(String name, String type)
     {
+        super(name, type);
+        
         this.sweetnessLevel = sweetnessLevel;
         
     }
