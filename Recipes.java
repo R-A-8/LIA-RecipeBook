@@ -27,7 +27,7 @@ public class Recipes
     private Step step;
     
     
-    public Recipes(String name, String type)
+    public Recipes(String name)
     {
         //list initialization
         ingredientsList = new HashSet<Ingredients>();

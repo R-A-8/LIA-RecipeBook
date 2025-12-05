@@ -16,7 +16,7 @@ public class Desserts extends Recipes
      */
     public Desserts(String name, String type)
     {
-        super(name, type);
+        super(name);
         
         this.sweetnessLevel = sweetnessLevel;
         

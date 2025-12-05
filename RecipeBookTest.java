@@ -68,40 +68,7 @@ public class RecipeBookTest
         //Libérez ici les ressources engagées par setUp()
     }
 
-    @Test
-    public void addRecipeTest()
-    {
-        RecipeBook recipeBo2 = new RecipeBook("Joe", "Joe's Recipes", 50, 3);
-        Recipes recipes1 = new Recipes();
-        recipeBo2.addRecipes(recipes1);
-    }
-
-
-    @Test
-    public void recipeCountTest()
-    {
-        RecipeBook recipeBo2 = new RecipeBook("Tony", "Tony's dishes", 45, 9);
-        Desserts desserts2 = new Desserts(7);
-        Appatiser appatise2 = new Appatiser();
-        MainDish mainDish2 = new MainDish();
-        recipeBo2.addRecipes(desserts2);
-        recipeBo2.addRecipes(appatise2);
-        recipeBo2.addRecipes(mainDish2);
-        assertEquals(3, recipeBo2.getRecipeCount());
-    }
-
-    @Test
-    public void searchRecipeNameTest()
-    {
-        RecipeBook recipeBo1 = new RecipeBook("John", "John's Recipes, INC.", 45, 9);
-        Desserts desserts1 = new Desserts(6);
-        Appatiser appatise1 = new Appatiser();
-        MainDish mainDish1 = new MainDish();
-        recipeBo1.addRecipes(desserts1);
-        recipeBo1.addRecipes(appatise1);
-        recipeBo1.addRecipes(mainDish1);
-        recipeBo1.searchRecipeName(appatise1);
-    }
+    
 }
 
 

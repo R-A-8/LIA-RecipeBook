@@ -13,7 +13,6 @@ public class MainDish extends Recipes
     
     private String name;
     
-    private 
     
 
     /**
@@ -22,7 +21,7 @@ public class MainDish extends Recipes
     public MainDish(String name, String type)
     {
         // initialise instance variables
-        super(name, type);
+        super(name);
         
         
     }

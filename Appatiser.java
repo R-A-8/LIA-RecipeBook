@@ -14,7 +14,7 @@ public class Appatiser extends Recipes
      */
     public Appatiser(String name, String type, int flaverLvl)
     {
-        super(name, type);
+        super(name);
         flaverLvl = flavorLevel;
         
     }

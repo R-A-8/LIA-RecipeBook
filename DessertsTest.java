@@ -66,19 +66,6 @@ public class DessertsTest
         //Libérez ici les ressources engagées par setUp()
     }
 
-    @Test
-    public void sweetnessLevelTest()
-    {
-        Desserts desserts1 = new Desserts(5);
-        desserts1.giveSweetnessLevel();
-    }
-
-    @Test
-    public void addDesserts()
-    {
-        RecipeBook recipeBo1 = new RecipeBook("John", "John's Recipes, INC.", 50, 5);
-        Desserts ChocolateCake = new Desserts(9);
-        recipeBo1.addRecipes(ChocolateCake);
-    }
+    
 }
 

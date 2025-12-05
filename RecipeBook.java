@@ -21,14 +21,9 @@ public class RecipeBook
     private ArrayList<Recipes> recipes = new ArrayList<>();
     
     
-<<<<<<< HEAD
-    private Recipes recipe = new Recipes();
+
     
     
-    
-=======
-    //private Recipes recipe = new Recipes();
->>>>>>> 14d2c2dfd79542d2183abf33756819713198f6c2
 
     /**
      * Constructor for objects of class RecipeBook
@@ -56,10 +51,10 @@ public class RecipeBook
         
     }//Ready to write pseudocode
     
-    public void addRecipes(String name, String type)
+    public void addRecipes(Recipes recipeToAdd)
     {
         
-        recipes.add(new Recipes(name, type));
+        recipes.add(recipeToAdd);
     }//Ready to write pseudocode
     
     public void removeRecipes(Recipes recipeToRemove)
@@ -93,10 +88,6 @@ public class RecipeBook
         System.out.println(recipes);
     }
     
-<<<<<<< HEAD
-    public ArrayList<Recipes> listDessert()
-=======
-    //Voting system below:
     public void addVote(Recipes recipe)
     {
         recipe.increaseVote();
@@ -133,8 +124,8 @@ public class RecipeBook
         
     }
     
-    public void listDessert()
->>>>>>> 14d2c2dfd79542d2183abf33756819713198f6c2
+    public ArrayList<Recipes> listDessert()
+
     {
         ArrayList<Recipes> ds = new ArrayList<>();
         for(Recipes recipe : recipes){
