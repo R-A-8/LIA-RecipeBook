@@ -10,6 +10,9 @@ public class RecipeBook
 {
     // instance variables - replace the example below with your own
     
+    //parser:
+    private Parser parser;
+    
     private String author;
     
     private String publishingCompanyName;
@@ -30,6 +33,7 @@ public class RecipeBook
        this.numberOfPages = numberOfPages;
        this.numberOfSections = numberOfSections;
        printBook();
+       parser = new Parser();
     }
     
     public void printBook(){
@@ -162,5 +166,47 @@ public class RecipeBook
         return mD;
     }
     
-   
+    public void play()
+    {
+        bookDetails();
+        
+        boolean finished = false;
+        while(! finished)
+        {
+            Command command = parser.getCommand();
+            finished = processCommand(command);
+        }
+        System.out.println("Thank you for choosing our recipe book! Good bye.");
+    }
+    
+    private boolean processCommand(Command command) 
+    {
+        boolean wantToQuit = false;
+
+        if(command.isUnknown()) {
+            System.out.println("I don't know what you mean...");
+            return false;
+        }
+
+        String Wordcommand = command.getWordCommand();
+
+        if (Wordcommand.equals("close")) {
+            wantToQuit = quit(command);
+        }
+        
+        // else command not recognised.
+        return wantToQuit;
+    }
+    
+    private boolean quit(Command command) 
+    {
+        if(command.hasSecondWord()) {
+            System.out.println("Quit what?");
+            return false;
+        }
+        else {
+            // signal that we want to quit
+            return true;  
+        }
+    }
 }
