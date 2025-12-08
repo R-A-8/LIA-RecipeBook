@@ -1,3 +1,4 @@
+
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -8,9 +9,9 @@ import java.util.HashSet;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Recipes
+public class Recipe
 {
-    //SIMPLE FEILDS
+
     private String name;
     private int duration;
     private String type;
@@ -19,21 +20,18 @@ public class Recipes
     
     private int votes;
     //LISTS
-    private HashSet ingredientsList;
+    
     private ArrayList stepList;
-    private HashMap<String, String> ingredients = new HashMap<>();
+    private ArrayList<Ingredient> ingredients = new ArrayList<>();
     
     //OBJECTS
     private Step step;
+    private Unit unit;
     
-    
-    public Recipes(String name)
+    public Recipe(String name)
     {
         //list initialization
-        ingredientsList = new HashSet<Ingredients>();
         stepList = new ArrayList<Step>();
-        
-        //step = new Step();
     }
     
     public void addSteps(String instruction, int duration)
@@ -50,23 +48,32 @@ public class Recipes
         stepList.remove(number);
     }
 
-    public void addIngredients(String name, int amount)
-
+    public Ingredient addIngredient(String name, int amount, Unit unit)
     {
-        ingredientsList.add(new Ingredients(name, amount));
-        //my bad for stealing like everything even text down there |
-        //                                                        \ /
-        //number of that specific ingredient to use in the recipe (e.g.: "4", "eggs");
+        return new Ingredient(name, amount, unit);
     }
     
-    public void removeIngredients(String number, String ingredient)
+    public void showUnits()
     {
-        if(ingredient.equals(ingredients))
+        for(Unit unit : unit.values())
         {
-            ingredients.remove(ingredient);
+            System.out.println(unit);
         }
     }
     
+    public void addIngredient(Ingredient ingredientToAdd)
+    {
+        ingredients.add(ingredientToAdd);
+    }
+    
+    public void removeIngredients(Ingredient ingredientToRemove)
+    {
+        for(Ingredient ingredient : ingredients){
+            if(ingredientToRemove.equals(ingredient)){
+                ingredients.remove(ingredient);
+            }
+        }
+    }
     
     public boolean addRating(int rating)
     {
@@ -81,19 +88,20 @@ public class Recipes
         return rating < 0 || rating > 5;
     } //From online-shop-JUnit
     
-    public int getRating()
-    {
-        return rating;
-    }
-    
     public void increaseVote()
     {
         votes++;
-    }
+    }  
     
     public void decreaseVote()
     {
         votes--;
+    }
+    
+    //Getters below:
+    public int getRating()
+    {
+        return rating;
     }
     
     public int getVotes()

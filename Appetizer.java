@@ -1,5 +1,6 @@
 
-public class Appetizer extends Recipes
+
+public class Appetizer extends Recipe
 {
     // instance variables - replace the example below with your own
     private int flavorLevel;
@@ -12,10 +13,9 @@ public class Appetizer extends Recipes
     /**
      * Constructor for objects of class appatisers
      */
-    public Appetizer(String name, String type, int flaverLvl)
+    public Appetizer(String name)
     {
         super(name);
-        flaverLvl = flavorLevel;
         
     }
 
@@ -25,9 +25,27 @@ public class Appetizer extends Recipes
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public void listFlavor(int flavorLvl)
+    public void listFlavor()
     {
-        
+        if(flavorLevel == 0)
+        {
+            System.out.println("No flavor");
+        }
+        if(flavorLevel < 5 && flavorLevel > 0)
+        {
+            System.out.println("Low flavor");
+        }
+        if(flavorLevel == 5)
+        {
+            System.out.println("Moderately flavorful");
+        }
+        if(flavorLevel > 5)
+        {
+            System.out.println("Really flavorful");
+        }
+        if(flavorLevel > 10 && flavorLevel < 0)
+        {
+            System.out.println("Invalid flavor level");
+        }
     }
-
 }

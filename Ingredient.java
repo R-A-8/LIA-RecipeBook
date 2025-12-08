@@ -1,3 +1,4 @@
+
 import java.util.HashSet;
 import java.util.ArrayList;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * @Rend A.
  * @version (a version number or a date)
  */
-public class Ingredients
+public class Ingredient
 {
     // instance variables - replace the example below with your own
     private String name;
@@ -17,10 +18,7 @@ public class Ingredients
     private HashSet<String> inList;
     
 
-    private ArrayList<Ingredients> ingredients = new ArrayList<>();
-
-    //private HashMap<String, String> ingredients = new HashMap<>();
-
+    private ArrayList<Ingredient> ingredients = new ArrayList<>();
 
     /**
      * Constructor for objects of class Ingredients
@@ -28,38 +26,15 @@ public class Ingredients
 
 
 
-    public Ingredients(String name, int amount)
+    public Ingredient(String name, int amount, Unit unit)
 
     {
-        this.name = name;
         this.amount = amount;
+        this.name = name;
         
-        //inList = new HashSet<>();
+        //to test if it works
+        System.out.println("Ingredient added: " + amount + unit + " of " + name);
     } 
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-
-    public void addIngredients(Ingredients ingredientToAdd)
-    {
-        ingredients.add(ingredientToAdd);
-    }
-
- 
-
-    public void removeIngredients(Ingredients ingredientToRemove)
-    {
-        for(Ingredients ingredient : ingredients){
-            if(ingredientToRemove.equals(ingredient)){
-                ingredients.remove(ingredient);
-            }
-        }
-    }
-    
 
 
     public int scaleIngredients(int scale){

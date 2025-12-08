@@ -18,13 +18,8 @@ public class RecipeBook
     
     private int numberOfSections;
     
-    private ArrayList<Recipes> recipes = new ArrayList<>();
+    private ArrayList<Recipe> recipes = new ArrayList<>();
     
-    
-
-    
-    
-
     /**
      * Constructor for objects of class RecipeBook
      */
@@ -51,15 +46,15 @@ public class RecipeBook
         
     }//Ready to write pseudocode
     
-    public void addRecipes(Recipes recipeToAdd)
+    public void addRecipes(Recipe recipeToAdd)
+
     {
-        
         recipes.add(recipeToAdd);
     }//Ready to write pseudocode
     
-    public void removeRecipes(Recipes recipeToRemove)
+    public void removeRecipes(Recipe recipeToRemove)
     {
-        for(Recipes recipe :  recipes){
+        for(Recipe recipe :  recipes){
             if(recipeToRemove.equals(recipe)){
                 recipes.remove(recipe);
             }
@@ -68,15 +63,15 @@ public class RecipeBook
     
     public int getRecipeCount(){
         int index = 0;
-        for(Recipes recipe : recipes){
+        for(Recipe recipe : recipes){
             index++;
         }
         return index;
     }//Ready to write pseudocode
     
-    public void searchRecipeName(Recipes recipeName)
+    public void searchRecipeName(Recipe recipeName)
     {
-        for(Recipes recipe :  recipes){
+        for(Recipe recipe :  recipes){
             if(recipeName.equals(recipe)){
                 System.out.println(recipe);
             }
@@ -88,30 +83,32 @@ public class RecipeBook
         System.out.println(recipes);
     }
     
-    public void addVote(Recipes recipe)
+    //Voting system below:
+    public void addVote(Recipe recipe)
+
     {
         recipe.increaseVote();
     }
     
-    public void removeVote(Recipes recipe)
+    public void removeVote(Recipe recipe)
     {
         recipe.decreaseVote();
     }
     
-    public Recipes getHighestVoted()
+    public Recipe getHighestVoted()
     {
         int recipeId = 0;
         if(recipes.size() == 0)
         {
             return null;
         }
-        Recipes highestVoted = recipes.get(recipeId);
+        Recipe highestVoted = recipes.get(recipeId);
         
         recipeId++;
         
         while(recipeId < recipes.size())
         {
-            Recipes currentRecipe = recipes.get(recipeId);
+            Recipe currentRecipe = recipes.get(recipeId);
             if(currentRecipe.getVotes() > highestVoted.getVotes())
             {
                 highestVoted = currentRecipe;
@@ -124,22 +121,23 @@ public class RecipeBook
         
     }
     
-    public ArrayList<Recipes> listDessert()
-
+    public ArrayList<Recipe> listDessert()
     {
-        ArrayList<Recipes> ds = new ArrayList<>();
-        for(Recipes recipe : recipes){
-            if(recipe instanceof Desserts){
+        ArrayList<Recipe> ds = new ArrayList<>();
+        for(Recipe recipe : recipes){
+            if(recipe instanceof Dessert){
                 ds.add(recipe);
             }
         }
         return ds;
     }
     
-    public ArrayList<Recipes> listApps()
+    public ArrayList<Recipe> listApps()
     {
-        ArrayList<Recipes> apps = new ArrayList<>();
-        for(Recipes recipe : recipes){
+
+        ArrayList<Recipe> apps = new ArrayList<>();
+        for(Recipe recipe : recipes){
+
             if(recipe instanceof Appetizer){
                 apps.add(recipe);
             }
@@ -147,10 +145,10 @@ public class RecipeBook
         return apps;
     }
     
-    public ArrayList<Recipes> listMainDish()
+    public ArrayList<Recipe> listMainDish()
     {
-        ArrayList<Recipes> mD = new ArrayList<>();
-        for(Recipes recipe : recipes){
+        ArrayList<Recipe> mD = new ArrayList<>();
+        for(Recipe recipe : recipes){
             if(recipe instanceof MainDish){
                 mD.add(recipe);
             }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @Rend A.
  * @version (un numéro de version ou une date)
  */
-public class Desserts extends Recipes
+public class Dessert extends Recipe
 {
    private int sweetnessLevel;
    
@@ -14,7 +14,7 @@ public class Desserts extends Recipes
    /**
      * Constructor for objects of class Desserts
      */
-    public Desserts(String name, String type)
+    public Dessert(String name, String type)
     {
         super(name);
         

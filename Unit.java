@@ -7,5 +7,5 @@
  */
 public enum Unit
 {
-    MAINDISHES, APPETIZERS, DESSERTS, CLOSE
+    kg, g, pc, tbsp, tsp, ml, l, lb, oz, c 
 }
