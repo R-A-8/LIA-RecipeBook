@@ -14,7 +14,6 @@ public class Recipe
 
     private String name;
     private int duration;
-    private String type;
     
     private int rating;
     
@@ -31,6 +30,8 @@ public class Recipe
     public Recipe(String name)
     {
         //list initialization
+        this.name = name;
+        
         stepList = new ArrayList<Step>();
     }
     
@@ -80,6 +81,7 @@ public class Recipe
         if(ratingInvalid(rating)) {  // reject invalid ratings
             return false;
         }
+        this.rating = rating;
         return true;
     }//From online-shop-JUnit
     

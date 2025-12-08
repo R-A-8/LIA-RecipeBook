@@ -47,7 +47,6 @@ public class RecipeBook
     }//Ready to write pseudocode
     
     public void addRecipes(Recipe recipeToAdd)
-
     {
         recipes.add(recipeToAdd);
     }//Ready to write pseudocode
@@ -71,6 +70,7 @@ public class RecipeBook
     
     public void searchRecipeName(Recipe recipeName)
     {
+        
         for(Recipe recipe :  recipes){
             if(recipeName.equals(recipe)){
                 System.out.println(recipe);
@@ -80,7 +80,12 @@ public class RecipeBook
     
     public void printAllRecipes()
     {
-        System.out.println(recipes);
+        //doesn't really work as intended
+        for(Recipe recipe: recipes)
+        {
+            System.out.println(recipe);
+        }
+        
     }
     
     //Voting system below:
@@ -97,6 +102,7 @@ public class RecipeBook
     
     public Recipe getHighestVoted()
     {
+        
         int recipeId = 0;
         if(recipes.size() == 0)
         {
