@@ -31,6 +31,7 @@ public class Ingredient
     {
         this.amount = amount;
         this.name = name;
+       
         
         //to test if it works
         System.out.println("Ingredient added: " + amount + unit + " of " + name);

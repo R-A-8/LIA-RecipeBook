@@ -1,4 +1,5 @@
-import java.util.ArrayList;
+import java.util.ArrayList; 
+import java.util.Iterator;
 
 /**
  * Write a description of class RecipeBook here.
@@ -20,6 +21,8 @@ public class RecipeBook
     
     private ArrayList<Recipe> recipes = new ArrayList<>();
     
+    private Recipe rc;
+    
     /**
      * Constructor for objects of class RecipeBook
      */
@@ -34,6 +37,7 @@ public class RecipeBook
     
     public void printBook(){
         bookDetails();
+        rc.printRecipe();
     }
     
        public void bookDetails(){
@@ -43,7 +47,7 @@ public class RecipeBook
         System.out.println("First edition.");
         System.out.println("To pick a recipe, choose a type: Appetizers, Main Dishes or Desserts.");
         System.out.println("To close the book, write 'close'.");
-        
+         
     }//Ready to write pseudocode
     
     public void addRecipes(Recipe recipeToAdd)
@@ -53,12 +57,24 @@ public class RecipeBook
     
     public void removeRecipes(Recipe recipeToRemove)
     {
-        for(Recipe recipe :  recipes){
-            if(recipeToRemove.equals(recipe)){
-                recipes.remove(recipe);
-            }
+        
+        Iterator<Recipe> it = recipes.iterator();
+        while(it.hasNext()){
+            Recipe r = it.next();
+
+            if(r.equals(recipeToRemove)){
+                it.remove();
+
+                for(Recipe recipe :  recipes){
+                    if(recipeToRemove.equals(recipe)){
+                        recipes.remove(recipe);
+
+                    }
+
+                }
+            } //Ready to write pseudocode
         }
-    } //Ready to write pseudocode
+    }
     
     public int getRecipeCount(){
         int index = 0;

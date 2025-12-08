@@ -22,6 +22,7 @@ public class Recipe
     
     private ArrayList stepList;
     private ArrayList<Ingredient> ingredients = new ArrayList<>();
+    private ArrayList<Step> steps = new ArrayList<>();
     
     //OBJECTS
     private Step step;
@@ -48,11 +49,6 @@ public class Recipe
         //removes the step
         stepList.remove(number);
     }
-
-    public Ingredient addIngredient(String name, int amount, Unit unit)
-    {
-        return new Ingredient(name, amount, unit);
-    }
     
     public void showUnits()
     {
@@ -75,20 +71,8 @@ public class Recipe
             }
         }
     }
+
     
-    public boolean addRating(int rating)
-    {
-        if(ratingInvalid(rating)) {  // reject invalid ratings
-            return false;
-        }
-        this.rating = rating;
-        return true;
-    }//From online-shop-JUnit
-    
-    private boolean ratingInvalid(int rating)
-    {
-        return rating < 0 || rating > 5;
-    } //From online-shop-JUnit
     
     public void increaseVote()
     {
@@ -100,15 +84,38 @@ public class Recipe
         votes--;
     }
     
-    //Getters below:
-    public int getRating()
+    public void addSteps(Step s)
     {
-        return rating;
+        steps.add(s);        
     }
+    //Getters below:
+
     
     public int getVotes()
     {
         return votes;
     }
     
+    
+    public void printRecipe()
+    {
+        System.out.println("Title: " + name);
+        System.out.println("Ingredients:");
+        for(Ingredient i : ingredients){
+            System.out.print("-" + i + "n/");
+        }
+        System.out.println("Steps:");
+        for(Step s : steps){
+            System.out.print("-" + s + "n/");
+        }
+    
+        if(votes > 0) {
+            System.out.println("  -  " + votes + " people like this.");
+        }
+        else {
+            System.out.println();
+        }
+        
+
+    }
 }
