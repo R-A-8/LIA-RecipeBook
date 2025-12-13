@@ -7,5 +7,5 @@
  */
 public enum TableOfContents
 {
-    DESSERTS, MAINDISHES, APPETIZERS
+    DESSERT, MAINDISH, APPETIZER
 }

@@ -13,10 +13,12 @@ public class Appetizer extends Recipe
     /**
      * Constructor for objects of class appatisers
      */
-    public Appetizer(String name)
+    public Appetizer(String name, int flavorLevel, boolean isVegetarian)
     {
         super(name);
         
+        this.flavorLevel = flavorLevel;
+        this.isVegetarian = isVegetarian;
     }
 
     /**
@@ -47,5 +49,11 @@ public class Appetizer extends Recipe
         {
             System.out.println("Invalid flavor level");
         }
+    }
+    
+    public void showProperties() {
+        System.out.println("Appatizer: " + getName());
+        System.out.println("Flavor level: " + flavorLevel + "/10");
+        System.out.println("Vegetarian: " + (isVegetarian ? "Yes" : "No"));
     }
 }

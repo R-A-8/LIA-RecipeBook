@@ -11,14 +11,17 @@ public class Step
     // instance variables - replace the example below with your own
     public String instruction;
     
-    public int duration;
+    public int order;
     private ArrayList listOfSteps;
     
     /**
      * Constructor for objects of class Steps
      */
-    public Step(String instruction, int duration)
+    public Step(int order, String instruction)
     {
+        this.order = order;
+        this.instruction = instruction;
+    
         // initialise instance variables
         listOfSteps = new ArrayList<String>();
         
@@ -32,11 +35,13 @@ public class Step
      */
     
     
-    public void listAllSteps()
+    public String getInstruction()
     {
-        for(int i = 0; i > listOfSteps.size(); i++)
-        {
-            System.out.print(listOfSteps.get(i));
-        }
+        return instruction;
+    }
+    
+    public int getOrder()
+    {
+        return order;
     }
 }

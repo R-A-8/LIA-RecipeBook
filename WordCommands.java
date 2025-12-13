@@ -9,7 +9,7 @@ public class WordCommands
 {
     // instance variables - replace the example below with your own
     private static final String[] availibleCommands = {
-        "go", "quit", "help"
+        "quit", "help", "add", "remove", "vote", "show"
     };
 
     

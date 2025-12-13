@@ -1,5 +1,8 @@
 import java.util.ArrayList; 
 import java.util.Iterator;
+import java.util.Scanner;
+import java.util.Arrays;
+
 
 /**
  * Write a description of class RecipeBook here.
@@ -41,7 +44,7 @@ public class RecipeBook
     
     public void printBook(){
         bookDetails();
-        rc.printRecipe();
+        //rc.printRecipe();
     }
     
        public void bookDetails(){
@@ -51,16 +54,25 @@ public class RecipeBook
         System.out.println("First edition.");
         System.out.println("To pick a recipe, choose a type: Appetizers, Main Dishes or Desserts.");
         System.out.println("To close the book, write 'close'.");
+        System.out.println("To view all commands,  WRITE 'help'.");
          
     }//Ready to write pseudocode
     
     public void addRecipes(Recipe recipeToAdd)
     {
+        for (Recipe recipe : recipes) {
+            if (recipe.getName().equals(recipeToAdd.getName())) {
+                System.out.println("Can't have two recipes with the same name!");
+                return;
+            }
+        }
         recipes.add(recipeToAdd);
     }//Ready to write pseudocode
     
-    public void removeRecipes(Recipe recipeToRemove)
+    public void removeRecipes(String recipeName)
     {
+        
+        Recipe recipeToRemove = searchRecipeName(recipeName);
         
         Iterator<Recipe> it = recipes.iterator();
         while(it.hasNext()){
@@ -70,7 +82,7 @@ public class RecipeBook
                 it.remove();
 
                 for(Recipe recipe :  recipes){
-                    if(recipeToRemove.equals(recipe)){
+                    if(recipeToRemove.equals(recipeToRemove)){
                         recipes.remove(recipe);
 
                     }
@@ -88,24 +100,21 @@ public class RecipeBook
         return index;
     }//Ready to write pseudocode
     
-    public void searchRecipeName(Recipe recipeName)
-    {
-        
-        for(Recipe recipe :  recipes){
-            if(recipeName.equals(recipe)){
-                System.out.println(recipe);
+    private Recipe searchRecipeName(String name) {
+        for (Recipe recipe : recipes) {
+            if (recipe.getName().equalsIgnoreCase(name)) {
+                return recipe;
             }
         }
+        return null;
     }
     
     public void printAllRecipes()
     {
-        //doesn't really work as intended
-        for(Recipe recipe: recipes)
-        {
-            System.out.println(recipe);
+        for (Recipe recipe : recipes) {
+            recipe.showProperties();
+            System.out.println("-------------------");
         }
-        
     }
     
     //Voting system below:
@@ -120,13 +129,14 @@ public class RecipeBook
         recipe.decreaseVote();
     }
     
-    public Recipe getHighestVoted()
+    public void getHighestVoted()
     {
         
         int recipeId = 0;
         if(recipes.size() == 0)
         {
-            return null;
+            System.out.println("there are no recipes.");
+            return;
         }
         Recipe highestVoted = recipes.get(recipeId);
         
@@ -143,7 +153,7 @@ public class RecipeBook
             recipeId++;
         }
         
-        return highestVoted;
+        System.out.println("highest voted recipe is " + highestVoted.getName());
         
     }
     
@@ -182,7 +192,7 @@ public class RecipeBook
         return mD;
     }
     
-    public void play()
+    public void run()
     {
         bookDetails();
         
@@ -198,21 +208,49 @@ public class RecipeBook
     private boolean processCommand(Command command) 
     {
         boolean wantToQuit = false;
-
+        
         if(command.isUnknown()) {
             System.out.println("I don't know what you mean...");
             return false;
         }
 
         String Wordcommand = command.getWordCommand();
-
+        
+        //quit
         if (Wordcommand.equals("close")) {
             wantToQuit = quit(command);
         }
         
-        // else command not recognised.
+        //add/remove functionality
+        if (Wordcommand.equals("add"))
+        {
+            add(command);
+        }
+        if (Wordcommand.equals("remove"))
+        {
+            remove(command);
+        }
+        
+        //List functionalities
+        if(Wordcommand.equals("help"))
+        {
+            help();
+        }
+        if(Wordcommand.equals("show"))
+        {
+            show(command);
+        }
+        
+        //voting system
+        if(Wordcommand.equals("vote"))
+        {
+            Vote(command);
+        }
+        
         return wantToQuit;
     }
+    
+    //QUIT:
     
     private boolean quit(Command command) 
     {
@@ -222,7 +260,362 @@ public class RecipeBook
         }
         else {
             // signal that we want to quit
-            return true;  
+            return true;
         }
     }
+    
+    //ADD AND REMOVE:
+    
+    private void add(Command command) {
+        if(command.getWord2() == null)
+        {
+            System.out.println("add what?");
+            return;
+        }
+        
+        if (command.getWord2().equals("ingredient")) {
+            if (recipes.size() > 0) {
+                Scanner scanner = new Scanner(System.in);
+
+                System.out.print("Which recipe do you want to add an ingredient to? ");
+                String recipeName = scanner.nextLine();
+                Recipe target = searchRecipeName(recipeName);
+                if (target == null) {
+                    System.out.println("Recipe not found.");
+                    return;
+                }
+
+                System.out.print("What's the name of the ingredient? ");
+                String name = scanner.nextLine();
+
+                System.out.print("What's the amount? ");
+                int amount = Integer.parseInt(scanner.nextLine());
+
+                System.out.print("What's the unit (kg, g, pc, tbsp, tsp, ml, l, lb, oz, cups)");
+                String unitInput = scanner.nextLine();
+
+                try {
+                    Unit unit = Unit.valueOf(unitInput);
+                    Ingredient newIngredient = new Ingredient(name, amount, unit);
+                    target.addIngredient(newIngredient);
+                    System.out.println("Ingredient created: " + newIngredient + " added to " + target.getName());
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Invalid unit. Please use one of: " + Arrays.toString(Unit.values()));
+                }
+            } else {
+                System.out.println("You have no recipes to add an ingredient to!");
+            }
+        }
+
+        
+        else if (command.getWord2().equals("recipe")) {
+            Scanner scanner = new Scanner(System.in);
+            
+            System.out.println("What's the name of the recipe? ");
+            String name = scanner.nextLine();
+            
+            System.out.println("What type of recipe is it (Appetizer, mainDish or dessert?) ");
+            String typeInput = scanner.nextLine().toUpperCase();
+            
+            System.out.println("what's the Flavor/Sweetness/spicy level (0/10)?");
+            int level = Integer.parseInt(scanner.nextLine());
+            
+            System.out.print("Is this recipe vegetarian? (yes/no): ");
+            String input = scanner.nextLine().trim().toLowerCase();
+            boolean vege = input.equals("yes");
+            try {
+                TableOfContents type = TableOfContents.valueOf(typeInput);
+                Recipe newRecipe;
+
+                switch (type) {
+                    case MAINDISH:
+                        newRecipe = new MainDish(name, level, vege);
+                        break;
+                    case DESSERT:
+                        newRecipe = new Dessert(name, level, vege);
+                        break;
+                    case APPETIZER:
+                        newRecipe = new Appetizer(name, level, vege);
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Unknown type");
+                }
+                recipes.add(newRecipe);
+                
+                System.out.println("Recipe created: " + newRecipe.getName());
+            }catch (IllegalArgumentException e) {
+                System.out.println("Invalid type. Valid options: " + Arrays.toString(TableOfContents.values()));
+            }
+            
+            
+        }
+        else if (command.getWord2().equals("step")) {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print("Which recipe do you want to add a step to? ");
+            String recipeName = scanner.nextLine();
+
+            Recipe target = null;
+            for (Recipe recipe : recipes) {
+                if (recipe.getName().equalsIgnoreCase(recipeName)) {
+                    target = recipe;
+                    break;
+                }
+            }
+
+            if (target == null) {
+                System.out.println("Recipe not found.");
+                return;
+            }
+
+            System.out.print("Enter step number: ");
+            int order = Integer.parseInt(scanner.nextLine());
+
+            System.out.print("Enter step instruction: ");
+            String instruction = scanner.nextLine();
+
+            Step newStep = new Step(order, instruction);
+            target.addStep(newStep);
+
+            System.out.println("Added: " + newStep + " to " + target.getName());
+        }
+        else if (command.getWord2().equals("scale")) {
+            if (recipes.size() > 0) {
+                Scanner scanner = new Scanner(System.in);
+
+                System.out.print("In which recipe is the ingredient? ");
+                String recipeName = scanner.nextLine();
+                Recipe target = searchRecipeName(recipeName);
+
+                if (target == null) {
+                    System.out.println("Recipe not found.");
+                        return;
+                }
+
+                target.listIngredients();
+
+                System.out.print("Which ingredient do you want to scale? ");
+                String ingredientName = scanner.nextLine();
+    
+                Ingredient ingredient = target.searchIngredient(ingredientName);
+                if (ingredient == null) {
+                    System.out.println("Ingredient not found.");
+                    return;
+                }
+    
+                System.out.print("Scale by what factor (integer)? ");
+                int factor = Integer.parseInt(scanner.nextLine());
+
+                ingredient.scaleIngredients(factor);
+                System.out.println("Scaled: " + ingredient);
+            } else {
+                System.out.println("There are no recipes!");
+            }
+        }
+        
+        
+    }
+    
+    public void remove(Command command) {
+        if(command.getWord2() == null)
+        {
+            System.out.println("remove what?");
+            return;
+        }
+
+        Scanner scanner = new Scanner(System.in);
+
+        if (command.getWord2().equals("recipe")) {
+            if(recipes.size() > 0)
+            {
+                System.out.print("Enter recipe name to remove: ");
+                String recipeName = scanner.nextLine();
+                removeRecipes(recipeName);
+                System.out.println("Recipe removed: " + recipeName);
+            }
+            else
+            {
+                System.out.println("Invalid recipe");
+            }
+            
+        }
+
+        if (command.getWord2().equals("ingredient")) {
+            System.out.print("Enter recipe name: ");
+            String recipeName = scanner.nextLine();
+            Recipe target = searchRecipeName(recipeName);
+
+            if (target != null) {
+                System.out.print("Enter ingredient name to remove: ");
+                String ingredientName = scanner.nextLine();
+                target.removeIngredient(ingredientName);
+                System.out.println("Ingredient removed: " + ingredientName);
+            } else {
+                System.out.println("Recipe not found.");
+            }
+        }
+
+        if (command.getWord2().equals("step")) {
+            System.out.print("Enter recipe name: ");
+            String recipeName = scanner.nextLine();
+            Recipe target = searchRecipeName(recipeName);
+    
+            if (target != null) {
+                System.out.print("Enter step number to remove: ");
+                int stepNumber = Integer.parseInt(scanner.nextLine());
+                target.removeStep(stepNumber);
+                System.out.println("Step removed: " + stepNumber);
+            } else {
+                System.out.println("Recipe not found.");
+            }
+        }
+    }
+    
+    //SHOW AND HELP:
+    
+    public void help()
+    {
+        System.out.println("LIST OF COMMANDS:");
+        System.out.println("add/remove: recipe, step, ingredient, [add] scale");
+        System.out.println("show: recipes, types, units, ingredients, steps, best");
+        System.out.println("vote: up, down");
+        System.out.println("close");
+        System.out.println("help");
+    }
+    
+    public void show(Command command)
+    {
+        if(command.getWord2() == null)
+        {
+            System.out.println("show what?");
+            return;
+        }
+        
+        if (command.getWord2().equals("recipes")) 
+        {
+            if(recipes.size() > 0)
+            {
+                printAllRecipes();
+            }
+            else
+            {
+                System.out.println("no recipes found");
+            }
+            
+        }
+        
+        if (command.getWord2().equals("types")) 
+        {
+            System.out.println(TableOfContents.values());
+        }
+        
+        if (command.getWord2().equals("units")) 
+        {
+            System.out.println(Unit.values());
+        }
+        
+        if (command.getWord2().equals("ingredients")) 
+        {
+            if(recipes.size() > 0)
+            {
+                Scanner scanner = new Scanner(System.in);
+
+                System.out.print("show ingredients of which recipe?");
+                String recipeName = scanner.nextLine();
+                Recipe target = searchRecipeName(recipeName);
+            
+                target.listIngredients();
+            }
+            else
+            {
+                System.out.print("you have no recipes!");
+            }
+            
+        }
+        
+        if (command.getWord2().equals("steps")) 
+        {
+            if(recipes.size() > 0)
+            {
+                Scanner scanner = new Scanner(System.in);
+
+                System.out.print("show steps of which recipe? ");
+                String recipeName = scanner.nextLine();
+                
+                Recipe target = null;
+                for (Recipe recipe : recipes) {
+                    if (recipe.getName().equalsIgnoreCase(recipeName)) {
+                        target = recipe;
+                        break;
+                    }
+                }
+
+                
+                if (target == null) {
+                    System.out.println("Recipe not found.");
+                    return;
+                }
+                
+                
+                target.listSteps();
+            }
+            else
+            {
+                System.out.print("you have no recipes!");
+            }
+            
+        }
+        
+        if (command.getWord2().equals("best")) 
+        {
+            getHighestVoted();
+        }
+    }
+    
+    //VOTING SYSTEM:
+    
+    public void Vote(Command command)
+    {
+        if(command.getWord2() == null)
+        {
+            System.out.println("vote what?");
+            return;
+        }
+        
+        
+        
+        if(recipes.size() > 0 )
+        {
+            Scanner scanner = new Scanner(System.in);
+            
+            if (command.getWord2().equals("up")) 
+            {
+                System.out.print("upVote which recipe?");
+                String recipeName = scanner.nextLine();
+            
+                Recipe target = searchRecipeName(recipeName);
+                
+                target.increaseVote();
+                System.out.println("UpVoted " + target.getName());
+            }
+        
+            if(command.getWord2().equals("down"))
+            {
+                System.out.print("downVote which recipe?");
+                String recipeName = scanner.nextLine();
+            
+                Recipe target = searchRecipeName(recipeName);
+            
+                target.decreaseVote();
+                System.out.println("DownVoted " + target.getName());
+            }
+        }
+        else
+        {
+            System.out.println("you have no recipes!");
+        }
+        
+        
+    }
+    
 }

@@ -14,6 +14,7 @@ public class Ingredient
     private String name;
     private int amount;
     private int scaling;
+    private Unit unit;
     
     private HashSet<String> inList;
     
@@ -31,12 +32,34 @@ public class Ingredient
     {
         this.amount = amount;
         this.name = name;
+        this.unit = unit;
        
         
         //to test if it works
         System.out.println("Ingredient added: " + amount + unit + " of " + name);
     } 
-
+    
+    public void getProperties()
+    {
+        System.out.println("Ingredient name: " + getName());
+        System.out.println("amount " + getAmount() + "" + getUnit());
+        System.out.println("");
+    }
+    
+    public String getName()
+    {
+        return name;
+    }
+    
+    public int getAmount()
+    {
+        return amount;
+    }
+    
+    public Unit getUnit()
+    {
+        return unit;
+    }
 
     public int scaleIngredients(int scale){
         //e.g.: the recipe serves 3 people, so we need 3 carrots, but the user wants to 

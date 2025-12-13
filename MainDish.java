@@ -19,12 +19,13 @@ public class MainDish extends Recipe
     /**
      * Constructor for objects of class MainDish
      */
-    public MainDish(String name)
+    public MainDish(String name, int spiceLevel, boolean isVegetarian)
     {
         // initialise instance variables
         super(name);
         
-        
+        this.spiceLevel = spiceLevel;
+        this.isVegetarian = isVegetarian;
     }
 
     /**
@@ -55,5 +56,11 @@ public class MainDish extends Recipe
         {
             System.out.println("Invalid spice level");
         }
+    }
+    
+    public void showProperties() {
+        System.out.println("Main dish: " + getName());
+        System.out.println("Spicy level: " + spiceLevel + "/10");
+        System.out.println("Vegetarian: " + (isVegetarian ? "Yes" : "No"));
     }
 }

@@ -2,6 +2,7 @@
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * Write a description of class Recipes here.
@@ -32,19 +33,14 @@ public class Recipe
     {
         //list initialization
         this.name = name;
-        
-        stepList = new ArrayList<Step>();
     }
     
-    public void addSteps(String instruction, int duration)
+    public void addStep(Step step)
     {
-        
-        //add new Object to ArrayList stepList
-        stepList.add(new Step(instruction, duration));
-        
+        steps.add(step);   
     }
     
-    public void removeSteps(int number)
+    public void removeStep(int number)
     {
         //removes the step
         stepList.remove(number);
@@ -60,19 +56,47 @@ public class Recipe
     
     public void addIngredient(Ingredient ingredientToAdd)
     {
-        ingredients.add(ingredientToAdd);
-    }
-    
-    public void removeIngredients(Ingredient ingredientToRemove)
-    {
-        for(Ingredient ingredient : ingredients){
-            if(ingredientToRemove.equals(ingredient)){
-                ingredients.remove(ingredient);
+        for (Ingredient ingredient : ingredients) {
+            if (ingredient.getName().equals(ingredientToAdd.getName())) {
+                System.out.println("Can't have two ingredients with the same name!");
+                return;
             }
         }
+        ingredients.add(ingredientToAdd);
     }
 
+
+    public void removeIngredient(String ingredientName)
+    {
+        
+        Ingredient ingredientToRemove = searchIngredient(ingredientName);
+        
+        Iterator<Ingredient> it = ingredients.iterator();
+        while(it.hasNext()){
+            Ingredient r = it.next();
+
+            if(r.equals(ingredientToRemove)){
+                it.remove();
+
+                for(Ingredient ingredient :  ingredients){
+                    if(ingredientToRemove.equals(ingredient)){
+                        ingredients.remove(ingredient);
+
+                    }
+
+                }
+            } //Ready to write pseudocode
+        }
+    }
     
+    public Ingredient searchIngredient(String name) {
+        for (Ingredient ingredient : ingredients) {
+            if (ingredient.getName().equalsIgnoreCase(name)) {
+                return ingredient;
+            }
+        }
+        return null;
+    }
     
     public void increaseVote()
     {
@@ -117,5 +141,32 @@ public class Recipe
         }
         
 
+    }
+    
+    public String getName()
+    {
+        return name;
+    }
+    
+    public void listIngredients()
+    {
+        for(int i = 0; i < ingredients.size(); i++)
+        {
+            System.out.println("Ingredient name: " + ingredients.get(i).getName());
+            System.out.println("amount: " + ingredients.get(i).getAmount() + "" + ingredients.get(i).getUnit());
+            System.out.println("");
+        }
+    }
+    
+    public void listSteps()
+    {
+        for(int i = 0; i < steps.size(); i++)
+        {
+            System.out.println(steps.get(i).getOrder() + ": " + steps.get(i).getInstruction());
+        }
+    }
+    
+    public void showProperties() {
+        System.out.println("Recipe: " + name);
     }
 }

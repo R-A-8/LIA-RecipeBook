@@ -9,16 +9,17 @@ import java.util.ArrayList;
 public class Dessert extends Recipe
 {
    private int sweetnessLevel;
-   
+   private boolean isVegetarian;
 
    /**
      * Constructor for objects of class Desserts
      */
-    public Dessert(String name)
+    public Dessert(String name, int flavorLevel, boolean isVegetarian)
     {
         super(name);
         
         this.sweetnessLevel = sweetnessLevel;
+        this.isVegetarian = isVegetarian;
         
     }
 
@@ -35,14 +36,24 @@ public class Dessert extends Recipe
     }
     
    public void giveSweetnessLevel(){
-      if(sweetnessLevel< 5){
-          System.out.println("Almost bitter.");
-      }
-      else if(sweetnessLevel == 5){
-          System.out.println("Moderately sweet.");
-      }
-      else if(sweetnessLevel > 5 && sweetnessLevel < 10){
-          System.out.println("Very sweet!");
-      }
+       if(sweetnessLevel < 0 && sweetnessLevel > 10)
+       {
+           System.out.println("invalid sweetness level.");
+       }
+       if(sweetnessLevel< 5){
+           System.out.println("Almost bitter.");
+       }
+       else if(sweetnessLevel == 5){
+           System.out.println("Moderately sweet.");
+       }
+       else if(sweetnessLevel > 5 && sweetnessLevel < 10){
+           System.out.println("Very sweet!");
+       }
    }
+   
+   public void showProperties() {
+        System.out.println("Dessert: " + getName());
+        System.out.println("Sweetness level: " + sweetnessLevel + "/10");
+        System.out.println("Vegetarian: " + (isVegetarian ? "Yes" : "No"));
+    }
 }
