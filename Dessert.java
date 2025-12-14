@@ -54,6 +54,7 @@ public class Dessert extends Recipe
    public void showProperties() {
         System.out.println("Dessert: " + getName());
         System.out.println("Sweetness level: " + sweetnessLevel + "/10");
+        giveSweetnessLevel();
         System.out.println("Vegetarian: " + (isVegetarian ? "Yes" : "No"));
     }
 }

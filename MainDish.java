@@ -61,6 +61,7 @@ public class MainDish extends Recipe
     public void showProperties() {
         System.out.println("Main dish: " + getName());
         System.out.println("Spicy level: " + spiceLevel + "/10");
+        listSpicy();
         System.out.println("Vegetarian: " + (isVegetarian ? "Yes" : "No"));
     }
 }

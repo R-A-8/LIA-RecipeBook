@@ -67,6 +67,7 @@ public class RecipeBook
             }
         }
         recipes.add(recipeToAdd);
+        System.out.println("Recipe created: " + recipeToAdd.getName());
     }//Ready to write pseudocode
     
     public void removeRecipes(String recipeName)
@@ -340,9 +341,8 @@ public class RecipeBook
                     default:
                         throw new IllegalArgumentException("Unknown type");
                 }
-                recipes.add(newRecipe);
+                addRecipes(newRecipe);
                 
-                System.out.println("Recipe created: " + newRecipe.getName());
             }catch (IllegalArgumentException e) {
                 System.out.println("Invalid type. Valid options: " + Arrays.toString(TableOfContents.values()));
             }
@@ -477,7 +477,7 @@ public class RecipeBook
     {
         System.out.println("LIST OF COMMANDS:");
         System.out.println("add/remove: recipe, step, ingredient, [add] scale");
-        System.out.println("show: recipes, types, units, ingredients, steps, best");
+        System.out.println("show: recipes, types, units, ingredients, steps, best, appetizers, mainDishes, desserts");
         System.out.println("vote: up, down");
         System.out.println("close");
         System.out.println("help");
@@ -491,6 +491,8 @@ public class RecipeBook
             return;
         }
         
+        
+        
         if (command.getWord2().equals("recipes")) 
         {
             if(recipes.size() > 0)
@@ -502,6 +504,49 @@ public class RecipeBook
                 System.out.println("no recipes found");
             }
             
+        }
+        
+        if (command.getWord2().equals("appetizers")) 
+        {
+            if(listApps().size() < 0)
+            {
+                System.out.println("No appetizers found.");
+            }
+            else
+            {
+                for(int i = 0; i < listApps().size(); i++)
+                {
+                    listApps().get(i).showProperties();
+                }
+            }
+        }
+        if (command.getWord2().equals("mainDishes")) 
+        {
+            if(listApps().size() < 0)
+            {
+                System.out.println("No main dishes found.");
+            }
+            else
+            {
+                for(int i = 0; i < listMainDish().size(); i++)
+                {
+                    listMainDish().get(i).showProperties();
+                }
+            }
+        }
+        if (command.getWord2().equals("desserts")) 
+        {
+            if(listApps().size() < 0)
+            {
+                System.out.print("No desserts found.");
+            }
+            else
+            {
+                for(int i = 0; i < listDessert().size(); i++)
+                {
+                    listDessert().get(i).showProperties();
+                }
+            }
         }
         
         if (command.getWord2().equals("types")) 

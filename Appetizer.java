@@ -54,6 +54,8 @@ public class Appetizer extends Recipe
     public void showProperties() {
         System.out.println("Appatizer: " + getName());
         System.out.println("Flavor level: " + flavorLevel + "/10");
+        listFlavor();
         System.out.println("Vegetarian: " + (isVegetarian ? "Yes" : "No"));
+        
     }
 }
