@@ -52,9 +52,9 @@ public class RecipeBook
         System.out.println("Published in 2025 by " + publishingCompanyName);
         System.out.println("Contains " + numberOfPages + " pages and " + numberOfSections + " sections.");
         System.out.println("First edition.");
-        System.out.println("To pick a recipe, choose a type: Appetizers, Main Dishes or Desserts.");
-        System.out.println("To close the book, write 'close'.");
         System.out.println("To view all commands,  WRITE 'help'.");
+        System.out.println("To close the book, write 'quit'.");
+        
          
     }//Ready to write pseudocode
     
@@ -203,7 +203,7 @@ public class RecipeBook
             Command command = parser.getCommand();
             finished = processCommand(command);
         }
-        System.out.println("Thank you for choosing our recipe book! Good bye.");
+        System.out.println("Book closed.");
     }
     
     private boolean processCommand(Command command) 
@@ -218,7 +218,7 @@ public class RecipeBook
         String Wordcommand = command.getWordCommand();
         
         //quit
-        if (Wordcommand.equals("close")) {
+        if (Wordcommand.equals("quit")) {
             wantToQuit = quit(command);
         }
         
@@ -551,12 +551,18 @@ public class RecipeBook
         
         if (command.getWord2().equals("types")) 
         {
-            System.out.println(TableOfContents.values());
+            for(TableOfContents table : TableOfContents.values())
+            {
+                System.out.println(table);
+            }
         }
         
         if (command.getWord2().equals("units")) 
         {
-            System.out.println(Unit.values());
+            for(Unit unit : Unit.values())
+            {
+                System.out.println(unit);
+            }
         }
         
         if (command.getWord2().equals("ingredients")) 

@@ -42,6 +42,6 @@ public class Command
     
     public boolean hasSecondWord()
     {
-        return wordCommand != null;
+        return Word2 != null;
     }
 }
