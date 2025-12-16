@@ -300,7 +300,7 @@ public class RecipeBook
                     Unit unit = Unit.valueOf(unitInput);
                     Ingredient newIngredient = new Ingredient(name, amount, unit);
                     target.addIngredient(newIngredient);
-                    System.out.println("Ingredient created: " + newIngredient + " added to " + target.getName());
+                    System.out.println("Ingredient created: " + newIngredient.getName() + " added to " + target.getName());
                 } catch (IllegalArgumentException e) {
                     System.out.println("Invalid unit. Please use one of: " + Arrays.toString(Unit.values()));
                 }
@@ -381,7 +381,7 @@ public class RecipeBook
             Step newStep = new Step(order, instruction);
             target.addStep(newStep);
 
-            System.out.println("Added: " + newStep + " to " + target.getName());
+            System.out.println("Added: " + newStep.getInstruction() + " to " + target.getName());
         }
         else if (command.getWord2().equals("scale")) {
             if (recipes.size() > 0) {
@@ -411,7 +411,7 @@ public class RecipeBook
                 int factor = Integer.parseInt(scanner.nextLine());
 
                 ingredient.scaleIngredients(factor);
-                System.out.println("Scaled: " + ingredient);
+                System.out.println("Scaled: " + ingredient.getName());
             } else {
                 System.out.println("There are no recipes!");
             }
