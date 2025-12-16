@@ -177,7 +177,7 @@ public class RecipeBookTest
         RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
         Dessert dessert1 = new Dessert("Sundae", 2, 10, true);
         recipeBo1.addRecipes(dessert1);
-        assertEquals("Sundae", recipeBo1.searchRecipeName("Sundae"));
+        assertEquals("Sundae", recipeBo1.searchRecipeName("Sundae").getName());
     }
 }
 

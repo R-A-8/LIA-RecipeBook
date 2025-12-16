@@ -1,15 +1,25 @@
-------------------------------------------------------------------------
-Ceci est le fichier LISEZMOI (README) du projet.  Décrivez-y votre projet.
-Dites au lecteur (qui ne sait rien du projet) ce qu'il a besoin de savoir.
-Au minimum, remplissez cette description :
-------------------------------------------------------------------------
+TITRE DU PROJET : Recipe book
+BUT POURSUIVI : The goal is to make a recipe book that can be easily changed and used.
+VERSION ou DATE : 2025-12-16
+COMMENT INVOQUER CE PROJET :Directly call the main method in the RecipeBook class, or
+create a new RecipeBook object then calling its "run" method.
+AUTEURS : Mohammad, Rend
+INSTRUCTIONS Ŕ L'USAGER: Once the program runs, you have many commands availible.
 
-TITRE DU PROJET :
-BUT POURSUIVI :
-VERSION ou DATE :
-COMMENT INVOQUER CE PROJET :
-AUTEURS :
-INSTRUCTIONS Ŕ L'USAGER :
+help: shows you the list of all the commands in the program.
+
+add/remove recipe: allows you to create or delete recipes.
+add/remove step: allows you to add or remove a step for the recipe of your choice.
+add/remove ingredient: create or delete ingredients for a certain recipe.
+add scale: for when the serving size is either too big or too small. 
+
+show: Can display list of recipes, the availible units of mesurement, the best voted
+recipe, list of ingredients or steps in a particular recipe, and more.
+
+edit: modify general project information, including author, company, number of pages, and number of sections.
+
+quit: closes the program.
+
 
 
 what's the input, parameters, output and what it does for each method

@@ -29,6 +29,15 @@ public class RecipeBook
     
     private Recipe rc;
     
+
+    // ... all your existing code ...
+
+    public static void main(String[] args) 
+    {
+        RecipeBook book = new RecipeBook("Name", "Company name", 0, 0);
+        book.run();  // starts the interactive loop
+    }
+
     /**
      * Constructor for objects of class RecipeBook
      */
@@ -39,6 +48,26 @@ public class RecipeBook
        this.numberOfPages = numberOfPages;
        this.numberOfSections = numberOfSections;
        parser = new Parser();
+    }
+    
+    public void changeAuthor(String author)
+    {
+        this.author = author;
+    }
+    
+    public void changeCompany(String publishingCompanyName)
+    {
+        this.publishingCompanyName = publishingCompanyName;
+    }
+    
+    public void changePageCount(int numberOfPages)
+    {
+        this.numberOfPages = numberOfPages;
+    }
+    
+    public void changeSectionCount(int numberOfSections)
+    {
+        this.numberOfSections = numberOfSections;
     }
     
        public void bookDetails(){
@@ -98,7 +127,7 @@ public class RecipeBook
     public Recipe searchRecipeName(String name) {
         for (Recipe recipe : recipes) {
             if (recipe.getName().equalsIgnoreCase(name)) {
-                System.out.println(recipe.getName());
+                //System.out.println(recipe.getName());
                 return recipe;
             }
             else{
@@ -162,7 +191,7 @@ public class RecipeBook
         for(Recipe recipe : recipes){
             if(recipe instanceof Dessert){
                 ds.add(recipe);
-                System.out.println(recipe.getName());
+                //System.out.println(recipe.getName());
             }
         }
         return ds;
@@ -176,7 +205,7 @@ public class RecipeBook
 
             if(recipe instanceof Appetizer){
                 apps.add(recipe);
-                System.out.println(recipe.getName());
+                //System.out.println(recipe.getName());
             }
         }
         return apps;
@@ -188,7 +217,7 @@ public class RecipeBook
         for(Recipe recipe : recipes){
             if(recipe instanceof MainDish){
                 mD.add(recipe);
-                System.out.println(recipe.getName());
+                //System.out.println(recipe.getName());
             }
         }
         return mD;
@@ -223,6 +252,7 @@ public class RecipeBook
             wantToQuit = quit(command);
         }
         
+        
         //add/remove functionality
         if (Wordcommand.equals("add"))
         {
@@ -247,6 +277,12 @@ public class RecipeBook
         if(Wordcommand.equals("vote"))
         {
             Vote(command);
+        }    
+        
+        //modify book information
+        if (Wordcommand.equals("edit"))
+        {
+            edit(command);
         }
         
         return wantToQuit;
@@ -291,6 +327,11 @@ public class RecipeBook
                 String name = scanner.nextLine();
 
                 System.out.print("What's the amount? ");
+                if(!scanner.hasNextInt())
+                {
+                    System.out.println("invalid input");
+                    return;
+                }
                 int amount = Integer.parseInt(scanner.nextLine());
 
                 System.out.print("What's the unit (kg, g, pc, tbsp, tsp, ml, l, lb, oz, cups)");
@@ -301,6 +342,7 @@ public class RecipeBook
                     Ingredient newIngredient = new Ingredient(name, amount, unit);
                     target.addIngredient(newIngredient);
                     System.out.println("Ingredient created: " + newIngredient.getName() + " added to " + target.getName());
+                    return;
                 } catch (IllegalArgumentException e) {
                     System.out.println("Invalid unit. Please use one of: " + Arrays.toString(Unit.values()));
                 }
@@ -317,12 +359,22 @@ public class RecipeBook
             String name = scanner.nextLine();
             
             System.out.println("What's the serving size?");
+            if(!scanner.hasNextInt())
+            {
+                System.out.println("invalid input");
+                return;
+            }
             int serving =  Integer.parseInt(scanner.nextLine());
             
             System.out.println("What type of recipe is it (Appetizer, mainDish or dessert?) ");
             String typeInput = scanner.nextLine().toUpperCase();
             
             System.out.println("what's the Flavor/Sweetness/spicy level (0/10)?");
+            if(!scanner.hasNextInt())
+            {
+                System.out.println("invalid input");
+                return;
+            }
             int level = Integer.parseInt(scanner.nextLine());
             
             System.out.print("Is this recipe vegetarian? (yes/no): ");
@@ -346,6 +398,7 @@ public class RecipeBook
                         throw new IllegalArgumentException("Unknown type");
                 }
                 addRecipes(newRecipe);
+                return;
                 
             }catch (IllegalArgumentException e) {
                 System.out.println("Invalid type. Valid options: " + Arrays.toString(TableOfContents.values()));
@@ -373,6 +426,11 @@ public class RecipeBook
             }
 
             System.out.print("Enter step number: ");
+            if(!scanner.hasNextInt())
+            {
+                System.out.println("invalid input");
+                return;
+            }
             int order = Integer.parseInt(scanner.nextLine());
 
             System.out.print("Enter step instruction: ");
@@ -382,6 +440,7 @@ public class RecipeBook
             target.addStep(newStep);
 
             System.out.println("Added: " + newStep.getInstruction() + " to " + target.getName());
+            return;
         }
         else if (command.getWord2().equals("scale")) {
             if (recipes.size() > 0) {
@@ -408,6 +467,13 @@ public class RecipeBook
                 }
     
                 System.out.print("Scale by what factor (integer)? ");
+                
+                if(!scanner.hasNextInt())
+                {
+                    System.out.println("invalid input");
+                    return;
+                }
+            
                 int factor = Integer.parseInt(scanner.nextLine());
 
                 ingredient.scaleIngredients(factor);
@@ -436,6 +502,7 @@ public class RecipeBook
                 String recipeName = scanner.nextLine();
                 removeRecipes(recipeName);
                 System.out.println("Recipe removed: " + recipeName);
+                return;
             }
             else
             {
@@ -454,6 +521,7 @@ public class RecipeBook
                 String ingredientName = scanner.nextLine();
                 target.removeIngredient(ingredientName);
                 System.out.println("Ingredient removed: " + ingredientName);
+                return;
             } else {
                 System.out.println("Recipe not found.");
             }
@@ -469,6 +537,7 @@ public class RecipeBook
                 String instruction = scanner.nextLine();
                 target.removeStep(instruction);
                 System.out.println("Step removed: " + instruction);
+                return;
             } else {
                 System.out.println("Recipe not found.");
             }
@@ -483,7 +552,8 @@ public class RecipeBook
         System.out.println("add/remove: recipe, step, ingredient, [add] scale");
         System.out.println("show: recipes, types, units, ingredients, steps, best, appetizers, mainDishes, desserts");
         System.out.println("vote: up, down");
-        System.out.println("close");
+        System.out.println("edit: author, company, page, section");
+        System.out.println("quit");
         System.out.println("help");
     }
     
@@ -502,6 +572,7 @@ public class RecipeBook
             if(recipes.size() > 0)
             {
                 printAllRecipes();
+                return;
             }
             else
             {
@@ -522,6 +593,7 @@ public class RecipeBook
                 {
                     listApps().get(i).showProperties();
                 }
+                return;
             }
         }
         if (command.getWord2().equals("mainDishes")) 
@@ -536,6 +608,7 @@ public class RecipeBook
                 {
                     listMainDish().get(i).showProperties();
                 }
+                return;
             }
         }
         if (command.getWord2().equals("desserts")) 
@@ -550,6 +623,7 @@ public class RecipeBook
                 {
                     listDessert().get(i).showProperties();
                 }
+                return;
             }
         }
         
@@ -559,6 +633,7 @@ public class RecipeBook
             {
                 System.out.println(table);
             }
+            return;
         }
         
         if (command.getWord2().equals("units")) 
@@ -567,6 +642,7 @@ public class RecipeBook
             {
                 System.out.println(unit);
             }
+            return;
         }
         
         if (command.getWord2().equals("ingredients")) 
@@ -580,6 +656,7 @@ public class RecipeBook
                 Recipe target = searchRecipeName(recipeName);
             
                 target.listIngredients();
+                return;
             }
             else
             {
@@ -613,6 +690,7 @@ public class RecipeBook
                 
                 
                 target.listSteps();
+                return;
             }
             else
             {
@@ -624,6 +702,7 @@ public class RecipeBook
         if (command.getWord2().equals("best")) 
         {
             getHighestVoted();
+            return;
         }
     }
     
@@ -652,6 +731,7 @@ public class RecipeBook
                 
                 target.increaseVote();
                 System.out.println("UpVoted " + target.getName());
+                return;
             }
         
             if(command.getWord2().equals("down"))
@@ -663,6 +743,7 @@ public class RecipeBook
             
                 target.decreaseVote();
                 System.out.println("DownVoted " + target.getName());
+                return;
             }
         }
         else
@@ -671,6 +752,72 @@ public class RecipeBook
         }
         
         
+    }
+    
+    public void edit(Command command)
+    {
+        if(command.getWord2() == null)
+        {
+            System.out.println("vote what?");
+            return;
+        }
+        
+        if(command.getWord2().equals("author"))
+        {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print("What's the new name? ");
+            String name = scanner.nextLine();
+            
+            changeAuthor(name);
+            return;
+        }
+        
+        if(command.getWord2().equals("company"))
+        {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print("What's the company name? ");
+            String name = scanner.nextLine();
+            
+            changeCompany(name);
+            return;
+        }
+        
+        if(command.getWord2().equals("page"))
+        {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print("How many pages are there in the book? ");
+            
+            if(!scanner.hasNextInt())
+            {
+                System.out.println("invalid input");
+                return;
+            }
+            
+            int amount = Integer.parseInt(scanner.nextLine());
+            
+            changePageCount(amount);
+            return;
+        }
+        
+        if(command.getWord2().equals("section"))
+        {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print("How many sections are there in the book? ");
+            if(!scanner.hasNextInt())
+            {
+                System.out.println("invalid input");
+                return;
+            }
+
+            int amount = Integer.parseInt(scanner.nextLine());
+            
+            changeSectionCount(amount);
+            return;
+        }
     }
     
 }
