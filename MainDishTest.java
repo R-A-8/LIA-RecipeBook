@@ -39,4 +39,18 @@ public class MainDishTest
     public void tearDown()
     {
     }
+
+    @Test
+    public void listSpicyTest()
+    {
+        MainDish mainDish1 = new MainDish("Shawarma", 1, 2, false);
+        mainDish1.listSpicy();
+    }
+    
+     @Test
+    public void showPropretiesTest()
+    {
+        MainDish mainDish1 = new MainDish("Shawarma", 1, 2, false);
+        mainDish1.showProperties();
+    }
 }

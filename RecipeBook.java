@@ -38,13 +38,7 @@ public class RecipeBook
        this.publishingCompanyName = publishingCompanyName;
        this.numberOfPages = numberOfPages;
        this.numberOfSections = numberOfSections;
-       printBook();
        parser = new Parser();
-    }
-    
-    public void printBook(){
-        bookDetails();
-        //rc.printRecipe();
     }
     
        public void bookDetails(){
@@ -101,7 +95,7 @@ public class RecipeBook
         return index;
     }//Ready to write pseudocode
     
-    private Recipe searchRecipeName(String name) {
+    public Recipe searchRecipeName(String name) {
         for (Recipe recipe : recipes) {
             if (recipe.getName().equalsIgnoreCase(name)) {
                 return recipe;
@@ -264,7 +258,7 @@ public class RecipeBook
             return true;
         }
     }
-    
+     
     //ADD AND REMOVE:
     
     private void add(Command command) {
@@ -315,6 +309,9 @@ public class RecipeBook
             System.out.println("What's the name of the recipe? ");
             String name = scanner.nextLine();
             
+            System.out.println("What's the serving size?");
+            int serving =  Integer.parseInt(scanner.nextLine());
+            
             System.out.println("What type of recipe is it (Appetizer, mainDish or dessert?) ");
             String typeInput = scanner.nextLine().toUpperCase();
             
@@ -330,13 +327,13 @@ public class RecipeBook
 
                 switch (type) {
                     case MAINDISH:
-                        newRecipe = new MainDish(name, level, vege);
+                        newRecipe = new MainDish(name, serving, level, vege);
                         break;
                     case DESSERT:
-                        newRecipe = new Dessert(name, level, vege);
+                        newRecipe = new Dessert(name, serving, level, vege);
                         break;
                     case APPETIZER:
-                        newRecipe = new Appetizer(name, level, vege);
+                        newRecipe = new Appetizer(name, serving, level, vege);
                         break;
                     default:
                         throw new IllegalArgumentException("Unknown type");
@@ -462,9 +459,9 @@ public class RecipeBook
     
             if (target != null) {
                 System.out.print("Enter step number to remove: ");
-                int stepNumber = Integer.parseInt(scanner.nextLine());
-                target.removeStep(stepNumber);
-                System.out.println("Step removed: " + stepNumber);
+                String instruction = scanner.nextLine();
+                target.removeStep2(instruction);
+                System.out.println("Step removed: " + instruction);
             } else {
                 System.out.println("Recipe not found.");
             }

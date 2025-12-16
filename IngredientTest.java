@@ -6,7 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Classe-test IngredientsTest.
+ * Classe-test IngredientTest.
  *
  * @author  (votre nom)
  * @version (un numéro de version ou une date)
@@ -29,19 +29,20 @@ import org.junit.jupiter.api.Test;
  * qui réalise les engagements, et suivi d'un appel à tearDown(), qui les
  * détruit.
  */
-public class IngredientsTest
+public class IngredientTest
 {
     // Définissez ici les variables d'instance nécessaires à vos engagements;
     // Vous pouvez également les saisir automatiquement du présentoir
     // à l'aide du menu contextuel "Présentoir --> Engagements".
     // Notez cependant que ce dernier ne peut saisir les objets primitifs
     // du présentoir (les objets sans constructeur, comme int, float, etc.).
-    
+    protected double fValeur1;
+    protected double fValeur2;
 
     /**
-     * Constructeur de la classe-test IngredientsTest
+     * Constructeur de la classe-test IngredientTest
      */
-    public IngredientsTest()
+    public IngredientTest()
     {
     }
 
@@ -54,7 +55,8 @@ public class IngredientsTest
     public void setUp() // throws java.lang.Exception
     {
         // Initialisez ici vos engagements
-        
+        fValeur1= 2.0;
+        fValeur2= 3.0;
     }
 
     /**
@@ -67,24 +69,11 @@ public class IngredientsTest
     {
         //Libérez ici les ressources engagées par setUp()
     }
-
     
-
-    @Test
-    public void addIngredientsTest()
+     @Test
+    public void scaleIngredientTest()
     {
-        //Ingredients ingredie1 = new Ingredients();
-        //ingredie1.addIngredients("Egg", "3");
-    }
-
-    @Test
-    public void removeIngredientsTest()
-    {
-        //Ingredients ingredie1 = new Ingredients();
-        //ingredie1.addIngredients("Flour", "1");
-        //ingredie1.addIngredients("Chocolate chips", "15");
-        //ingredie1.removeIngredients("Chocolate chips");
+        Ingredient ingredie1 = new Ingredient("Tomato", 4, Unit.kg);
+        assertEquals(12, ingredie1.scaleIngredients(3));
     }
 }
-
-

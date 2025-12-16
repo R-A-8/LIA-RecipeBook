@@ -13,9 +13,9 @@ public class Appetizer extends Recipe
     /**
      * Constructor for objects of class appatisers
      */
-    public Appetizer(String name, int flavorLevel, boolean isVegetarian)
+    public Appetizer(String name, int serving, int flavorLevel, boolean isVegetarian)
     {
-        super(name);
+        super(name, serving);
         
         this.flavorLevel = flavorLevel;
         this.isVegetarian = isVegetarian;

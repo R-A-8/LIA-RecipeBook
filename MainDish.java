@@ -19,10 +19,10 @@ public class MainDish extends Recipe
     /**
      * Constructor for objects of class MainDish
      */
-    public MainDish(String name, int spiceLevel, boolean isVegetarian)
+    public MainDish(String name, int serving, int spiceLevel, boolean isVegetarian)
     {
         // initialise instance variables
-        super(name);
+        super(name, serving);
         
         this.spiceLevel = spiceLevel;
         this.isVegetarian = isVegetarian;

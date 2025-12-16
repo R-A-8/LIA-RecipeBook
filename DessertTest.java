@@ -1,10 +1,12 @@
+
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * Classe-test DessertsTest.
+ * Classe-test DessertTest.
  *
  * @author  (votre nom)
  * @version (un numéro de version ou une date)
@@ -27,19 +29,20 @@ import org.junit.jupiter.api.Test;
  * qui réalise les engagements, et suivi d'un appel à tearDown(), qui les
  * détruit.
  */
-public class DessertsTest
+public class DessertTest
 {
     // Définissez ici les variables d'instance nécessaires à vos engagements;
     // Vous pouvez également les saisir automatiquement du présentoir
     // à l'aide du menu contextuel "Présentoir --> Engagements".
     // Notez cependant que ce dernier ne peut saisir les objets primitifs
     // du présentoir (les objets sans constructeur, comme int, float, etc.).
-    
+    protected double fValeur1;
+    protected double fValeur2;
 
     /**
-     * Constructeur de la classe-test DessertsTest
+     * Constructeur de la classe-test DessertTest
      */
-    public DessertsTest()
+    public DessertTest()
     {
     }
 
@@ -52,7 +55,8 @@ public class DessertsTest
     public void setUp() // throws java.lang.Exception
     {
         // Initialisez ici vos engagements
-        
+        fValeur1= 2.0;
+        fValeur2= 3.0;
     }
 
     /**
@@ -65,7 +69,20 @@ public class DessertsTest
     {
         //Libérez ici les ressources engagées par setUp()
     }
-
     
+
+    @Test
+    public void giveSweetnessLevelTest()
+    {
+        Dessert dessert1 = new Dessert("Sundae", 2, 10, true);
+        dessert1.giveSweetnessLevel();
+    }
+
+    @Test
+    public void showPropretiesTest()
+    {
+        Dessert dessert1 = new Dessert("Sundae", 2, 10, true);
+        dessert1.showProperties();
+    }
 }
 

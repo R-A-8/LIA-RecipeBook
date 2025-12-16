@@ -69,7 +69,99 @@ public class RecipeBookTest
     }
 
     
+
+    @Test
+    public void addRecipeTest()
+    {
+        RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
+        Dessert dessert1 = new Dessert("Tiramisu", 4, 6, false);
+        recipeBo1.addRecipes(dessert1);
+    }
+
+    @Test
+    public void removeRecipeTest()
+    {
+        RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
+        Dessert dessert1 = new Dessert("Tiramisu", 4, 6, false);
+        recipeBo1.addRecipes(dessert1);
+        recipeBo1.removeRecipes("Tiramisu");
+    }
+
+    @Test
+    public void getRecipeCountTest()
+    {
+        RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
+        Dessert dessert1 = new Dessert("Tiramisu", 4, 6, false);
+        Appetizer appetize1 = new Appetizer("Caesar Salad", 1, 6, true);
+        recipeBo1.addRecipes(dessert1);
+        recipeBo1.addRecipes(appetize1);
+        assertEquals(2, recipeBo1.getRecipeCount());
+    }
+
+    @Test
+    public void searchRecipeNameTest()
+    {
+        RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
+        Dessert dessert1 = new Dessert("Sundae", 1, 10, false);
+        recipeBo1.addRecipes(dessert1);
+        assertEquals("Sundae", recipeBo1.searchRecipeName("Sundae"));
+    }
+
+    @Test
+    public void addVoteTest()
+    {
+        RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
+        MainDish mainDish1 = new MainDish("Sushi", 4, 2, false);
+        recipeBo1.addRecipes(mainDish1);
+        recipeBo1.addVote(mainDish1);
+    }
+    
+    @Test
+    public void removeVoteTest()
+    {
+        RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
+        MainDish mainDish1 = new MainDish("Sushi", 4, 2, false);
+        recipeBo1.addRecipes(mainDish1);
+        recipeBo1.addVote(mainDish1);
+        recipeBo1.removeVote(mainDish1);
+    }
+    
+    // @Test
+    //public void getHighestVotedTest()
+    //{
+        //RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
+        //MainDish mainDish1 = new MainDish("Sushi", 4, 2, false);
+        //Dessert dessert1 = new Dessert("Cupcake", 6, 6, true);
+        //recipeBo1.addRecipes(mainDish1);
+        //recipeBo1.addRecipes(dessert1);
+        //recipeBo1.addVote(mainDish1);
+        //recipeBo1.addVote(mainDish1);
+        //recipeBo1.addVote(mainDish1);
+        //recipeBo1.addVote(dessert1);
+        
+    //}
+
+    @Test
+    public void getHighestVotedTest()
+    {
+        RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
+        Dessert dessert1 = new Dessert("Cupcake", 6, 6, true);
+        MainDish mainDish1 = new MainDish("Sushi", 10, 2, false);
+        recipeBo1.addRecipes(mainDish1);
+        recipeBo1.addRecipes(dessert1);
+        recipeBo1.addVote(mainDish1);
+        recipeBo1.addVote(mainDish1);
+        recipeBo1.addVote(mainDish1);
+        recipeBo1.addVote(dessert1);
+        recipeBo1.getHighestVoted();
+    }
 }
+
+
+
+
+
+
 
 
 

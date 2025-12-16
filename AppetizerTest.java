@@ -39,4 +39,18 @@ public class AppetizerTest
     public void tearDown()
     {
     }
+
+    @Test
+    public void listFlavorTest()
+    {
+        Appetizer appetize1 = new Appetizer("Caesar Salad", 2, 6, false);
+        appetize1.listFlavor();
+    }
+    
+    @Test
+    public void showPropretiesTest()
+    {
+         Appetizer appetize1 = new Appetizer("Caesar Salad", 2, 6, false);
+        appetize1.showProperties();
+    }
 }

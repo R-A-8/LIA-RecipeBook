@@ -14,6 +14,9 @@ public class Recipe
 {
 
     private String name;
+    
+    private int serving;
+    
     private int duration;
     
     private int rating;
@@ -29,10 +32,11 @@ public class Recipe
     private Step step;
     private Unit unit;
     
-    public Recipe(String name)
+    public Recipe(String name, int serving)
     {
         //list initialization
         this.name = name;
+        this.serving = serving;
     }
     
     public void addStep(Step step)
@@ -45,6 +49,40 @@ public class Recipe
         //removes the step
         stepList.remove(number);
     }
+    
+    
+    public void removeStep2(String instruction)
+    {
+        
+        Step stepToRemove = searchStep(instruction);
+        
+        Iterator<Step> it = steps.iterator();
+        while(it.hasNext()){
+            Step s = it.next();
+
+            if(s.equals(stepToRemove)){
+                it.remove();
+
+                for(Step step :  steps){
+                    if(stepToRemove.equals(step)){
+                        steps.remove(step);
+
+                    }
+
+                }
+            } //Ready to write pseudocode
+        }
+    }
+    
+    public Step searchStep(String instruction) {
+        for (Step s : steps) {
+            if (s.getInstruction().equalsIgnoreCase(instruction)) {
+                return s;
+            }
+        }
+        return null;
+    }
+    
     
     public void showUnits()
     {
@@ -64,7 +102,6 @@ public class Recipe
         }
         ingredients.add(ingredientToAdd);
     }
-
 
     public void removeIngredient(String ingredientName)
     {
@@ -107,11 +144,7 @@ public class Recipe
     {
         votes--;
     }
-    
-    public void addSteps(Step s)
-    {
-        steps.add(s);        
-    }
+
     //Getters below:
 
     
@@ -124,13 +157,19 @@ public class Recipe
     public void printRecipe()
     {
         System.out.println("Title: " + name);
-        System.out.println("Ingredients:");
+        
+        System.out.println("\n" + "Serves " + serving + " people.");
+        
+        System.out.println("\n" + "Ingredients:");
         for(Ingredient i : ingredients){
-            System.out.print("-" + i + "n/");
+            //System.out.print("-" + i.getAmount() + i.getUnit() + " of " + i.getName());
+            System.out.println("-" + i.getAmount() + i.getUnit() + " of " + i.getName() + "\n");
         }
-        System.out.println("Steps:");
+        
+        System.out.println("\n" + "Steps:");
         for(Step s : steps){
-            System.out.print("-" + s + "n/");
+            
+            System.out.print("-" + s.getInstruction()+ "\n");
         }
     
         if(votes > 0) {

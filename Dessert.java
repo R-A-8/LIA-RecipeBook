@@ -14,9 +14,9 @@ public class Dessert extends Recipe
    /**
      * Constructor for objects of class Desserts
      */
-    public Dessert(String name, int flavorLevel, boolean isVegetarian)
+    public Dessert(String name, int serving, int sweetnessLevel, boolean isVegetarian)
     {
-        super(name);
+        super(name, serving);
         
         this.sweetnessLevel = sweetnessLevel;
         this.isVegetarian = isVegetarian;
@@ -40,13 +40,13 @@ public class Dessert extends Recipe
        {
            System.out.println("invalid sweetness level.");
        }
-       if(sweetnessLevel< 5){
+       else if(sweetnessLevel< 5){
            System.out.println("Almost bitter.");
        }
        else if(sweetnessLevel == 5){
            System.out.println("Moderately sweet.");
        }
-       else if(sweetnessLevel > 5 && sweetnessLevel < 10){
+       else if(sweetnessLevel > 5 && sweetnessLevel <= 10){
            System.out.println("Very sweet!");
        }
    }
