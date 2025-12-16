@@ -44,14 +44,8 @@ public class Recipe
         steps.add(step);   
     }
     
-    public void removeStep(int number)
-    {
-        //removes the step
-        stepList.remove(number);
-    }
     
-    
-    public void removeStep2(String instruction)
+    public void removeStep(String instruction)
     {
         
         Step stepToRemove = searchStep(instruction);

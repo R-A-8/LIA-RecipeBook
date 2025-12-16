@@ -98,7 +98,11 @@ public class RecipeBook
     public Recipe searchRecipeName(String name) {
         for (Recipe recipe : recipes) {
             if (recipe.getName().equalsIgnoreCase(name)) {
+                System.out.println(recipe.getName());
                 return recipe;
+            }
+            else{
+                System.out.println("Recipe not found.");
             }
         }
         return null;
@@ -158,6 +162,7 @@ public class RecipeBook
         for(Recipe recipe : recipes){
             if(recipe instanceof Dessert){
                 ds.add(recipe);
+                System.out.println(recipe.getName());
             }
         }
         return ds;
@@ -171,6 +176,7 @@ public class RecipeBook
 
             if(recipe instanceof Appetizer){
                 apps.add(recipe);
+                System.out.println(recipe.getName());
             }
         }
         return apps;
@@ -182,6 +188,7 @@ public class RecipeBook
         for(Recipe recipe : recipes){
             if(recipe instanceof MainDish){
                 mD.add(recipe);
+                System.out.println(recipe.getName());
             }
         }
         return mD;
@@ -460,7 +467,7 @@ public class RecipeBook
             if (target != null) {
                 System.out.print("Enter step number to remove: ");
                 String instruction = scanner.nextLine();
-                target.removeStep2(instruction);
+                target.removeStep(instruction);
                 System.out.println("Step removed: " + instruction);
             } else {
                 System.out.println("Recipe not found.");

@@ -12,7 +12,7 @@ public class Ingredient
 {
     // instance variables - replace the example below with your own
     private String name;
-    private int amount;
+    private int amount;  
     private int scaling;
     private Unit unit;
     

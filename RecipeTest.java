@@ -78,15 +78,15 @@ public class RecipeTest
         recipe1.addStep(step1);
     }
     
-     @Test
+    @Test
     public void removeStepTest()
     {
-        Recipe recipe1 = new Recipe("Sushi", 10);
-        Step step1 = new Step(1, "Wash the rice");
+        Recipe recipe1 = new Recipe("Soup", 4);
+        Step step1 = new Step(1, "Cut some brocoli");
         recipe1.addStep(step1);
-        recipe1.removeStep(0);
+        recipe1.removeStep("Cut some brocoli");
     }
-
+    
     @Test
     public void showUnitsTest()
     {
@@ -101,5 +101,28 @@ public class RecipeTest
         Ingredient ingredie1 = new Ingredient("Rice", 1, Unit.kg);
         recipe1.addIngredient(ingredie1);
     }
+
+    
+
+    @Test
+    public void removeIngredientTest()
+    {
+        Recipe recipe1 = new Recipe("Soup", 4);
+        Ingredient ingredie1 = new Ingredient("Brocoli", 5, Unit.unit);
+        recipe1.addIngredient(ingredie1);
+        recipe1.removeIngredient("Brocoli");
+    }
+
+    @Test
+    public void searchIngredientTest()
+    {
+        Recipe recipe1 = new Recipe("Soup", 4);
+        Ingredient ingredie1 = new Ingredient("Brocoli", 5, Unit.unit);
+        recipe1.addIngredient(ingredie1);
+        assertEquals(ingredie1, recipe1.searchIngredient("Brocoli"));
+    }
 }
+
+
+
 

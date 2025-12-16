@@ -99,15 +99,6 @@ public class RecipeBookTest
     }
 
     @Test
-    public void searchRecipeNameTest()
-    {
-        RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
-        Dessert dessert1 = new Dessert("Sundae", 1, 10, false);
-        recipeBo1.addRecipes(dessert1);
-        assertEquals("Sundae", recipeBo1.searchRecipeName("Sundae"));
-    }
-
-    @Test
     public void addVoteTest()
     {
         RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
@@ -126,21 +117,6 @@ public class RecipeBookTest
         recipeBo1.removeVote(mainDish1);
     }
     
-    // @Test
-    //public void getHighestVotedTest()
-    //{
-        //RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
-        //MainDish mainDish1 = new MainDish("Sushi", 4, 2, false);
-        //Dessert dessert1 = new Dessert("Cupcake", 6, 6, true);
-        //recipeBo1.addRecipes(mainDish1);
-        //recipeBo1.addRecipes(dessert1);
-        //recipeBo1.addVote(mainDish1);
-        //recipeBo1.addVote(mainDish1);
-        //recipeBo1.addVote(mainDish1);
-        //recipeBo1.addVote(dessert1);
-        
-    //}
-
     @Test
     public void getHighestVotedTest()
     {
@@ -155,7 +131,57 @@ public class RecipeBookTest
         recipeBo1.addVote(dessert1);
         recipeBo1.getHighestVoted();
     }
+
+    @Test
+    public void listMainDishesTest()
+    {
+        RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
+        MainDish mainDish1 = new MainDish("Sushi", 5, 4, false);
+        MainDish mainDish2 = new MainDish("Shawarma", 1, 2, false);
+        Dessert dessert1 = new Dessert("Sundae", 2, 10, true);
+        recipeBo1.addRecipes(mainDish1);
+        recipeBo1.addRecipes(mainDish2);
+        recipeBo1.addRecipes(dessert1);
+        assertNotSame("Sundae", recipeBo1.listMainDish());
+    }
+    
+    @Test
+    public void listAppsTest()
+    {
+        RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
+        Appetizer appetize1 = new Appetizer("Caesar Salad", 1, 6, true);
+        Appetizer appetize2 = new Appetizer("Tomato Soup", 3, 8, true);
+        MainDish mainDish1 = new MainDish("Shawarma", 1, 2, false);
+        recipeBo1.addRecipes(appetize1);
+        recipeBo1.addRecipes(appetize2);
+        recipeBo1.addRecipes(mainDish1);
+        assertNotSame("Shawarma", recipeBo1.listMainDish());
+    }
+    
+    @Test
+    public void listDessertsTest()
+    {
+        RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
+        Dessert dessert1 = new Dessert("Sundae", 2, 10, true);
+        Dessert dessert2 = new Dessert("Tiramisu", 4, 6, false);
+        Appetizer appetize1 = new Appetizer("Caesar Salad", 1, 6, true);
+        recipeBo1.addRecipes(dessert1);
+        recipeBo1.addRecipes(dessert2);
+        recipeBo1.addRecipes(appetize1);
+        assertNotSame("Caesar Salad", recipeBo1.listMainDish());
+    }
+
+    @Test
+    public void searchRecipeNameTest2()
+    {
+        RecipeBook recipeBo1 = new RecipeBook("Joe", "Joe's Recipes", 55, 5);
+        Dessert dessert1 = new Dessert("Sundae", 2, 10, true);
+        recipeBo1.addRecipes(dessert1);
+        assertEquals("Sundae", recipeBo1.searchRecipeName("Sundae"));
+    }
 }
+
+
 
 
 
