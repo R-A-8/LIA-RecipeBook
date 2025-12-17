@@ -24,7 +24,7 @@ public class Recipe
     private int votes;
     //LISTS
     
-    private ArrayList stepList;
+    
     private ArrayList<Ingredient> ingredients = new ArrayList<>();
     private ArrayList<Step> steps = new ArrayList<>();
     

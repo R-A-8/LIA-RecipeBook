@@ -22,18 +22,6 @@ public class Dessert extends Recipe
         this.isVegetarian = isVegetarian;
         
     }
-
-   /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public void listSugarBased()
-    {
-        //tbd
-        
-    }
     
    public void giveSweetnessLevel(){
        if(sweetnessLevel < 0 && sweetnessLevel > 10)

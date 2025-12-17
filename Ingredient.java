@@ -16,7 +16,7 @@ public class Ingredient
     private int scaling;
     private Unit unit;
     
-    private HashSet<String> inList;
+    
     
 
     private ArrayList<Ingredient> ingredients = new ArrayList<>();
@@ -71,7 +71,9 @@ public class Ingredient
     
     public void printIngredients()
     {
-        System.out.println(ingredients);
+        for(Ingredient i : ingredients){
+            System.out.println(getName());
+        }
     }
 
 }
