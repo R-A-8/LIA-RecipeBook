@@ -5,10 +5,12 @@ import java.util.Arrays;
 
 
 /**
- * Write a description of class RecipeBook here.
+ * This class is the driver class. Not only that, it contains attributes related to
+ * what a recipe book would contain. This class is the manager of all classes. It
+ * has access to all classes, meaning it could execute almost every method in all 
+ * classes.
  *
  * @Rend A.
- * @version (a version number or a date)
  */
 public class RecipeBook
 {
@@ -29,13 +31,13 @@ public class RecipeBook
     
     private Recipe rc;
     
-
-    // ... all your existing code ...
-
+    /**
+     * the main method, used to start the program without creating an object.
+     */
     public static void main(String[] args) 
     {
         RecipeBook book = new RecipeBook("Name", "Company name", 0, 0);
-        book.run();  // starts the interactive loop
+        book.run();
     }
 
     /**
@@ -50,26 +52,41 @@ public class RecipeBook
        parser = new Parser();
     }
     
+    /**
+     * Ability to change the author's name. 
+     */
     public void changeAuthor(String author)
     {
         this.author = author;
     }
     
+    /**
+     * Ability to change the company's name. 
+     */
     public void changeCompany(String publishingCompanyName)
     {
         this.publishingCompanyName = publishingCompanyName;
     }
     
+    /**
+     * Ability to change the amount of pages in the book. 
+     */
     public void changePageCount(int numberOfPages)
     {
         this.numberOfPages = numberOfPages;
     }
     
+    /**
+     * Ability to change the amount of sections in the book.  
+     */
     public void changeSectionCount(int numberOfSections)
     {
         this.numberOfSections = numberOfSections;
     }
     
+    /**
+     * Prints the book information and instructions on what to do next. 
+     */
        public void bookDetails(){
         System.out.println("This book was written by " + author);
         System.out.println("Published in 2025 by " + publishingCompanyName);
@@ -81,6 +98,9 @@ public class RecipeBook
          
     }//Ready to write pseudocode
     
+    /**
+     * Adds a recipe to the recipe book.
+     */
     public void addRecipes(Recipe recipeToAdd)
     {
         for (Recipe recipe : recipes) {
@@ -93,6 +113,10 @@ public class RecipeBook
         System.out.println("Recipe created: " + recipeToAdd.getName());
     }//Ready to write pseudocode
     
+    
+    /**
+     * removes a recipe in the recipe book.
+     */
     public void removeRecipes(String recipeName)
     {
         
@@ -116,6 +140,9 @@ public class RecipeBook
         }
     }
     
+    /**
+     * Shows you how many recipes there are in the recipe book.
+     */
     public int getRecipeCount(){
         int index = 0;
         for(Recipe recipe : recipes){
@@ -124,6 +151,9 @@ public class RecipeBook
         return index;
     }//Ready to write pseudocode
     
+    /**
+     *  Searches for a recipe by name.
+     */
     public Recipe searchRecipeName(String name) {
         for (Recipe recipe : recipes) {
             if (recipe.getName().equalsIgnoreCase(name)) {
@@ -137,6 +167,9 @@ public class RecipeBook
         return null;
     }
     
+    /**
+     * Shows all recipes that are currently in the recipe book.
+     */
     public void printAllRecipes()
     {
         for (Recipe recipe : recipes) {
@@ -146,17 +179,28 @@ public class RecipeBook
     }
     
     //Voting system below:
+    
+    /**
+     * Add an upvote to a recipe of choice.
+     */
     public void addVote(Recipe recipe)
 
     {
         recipe.increaseVote();
     }
     
+    
+    /**
+     * Add a downvote to a recipe of choice.
+     */
     public void removeVote(Recipe recipe)
     {
         recipe.decreaseVote();
     }
     
+    /**
+     * Shows the recipe with the highest amount of votes.
+     */
     public void getHighestVoted()
     {
         
@@ -185,6 +229,9 @@ public class RecipeBook
         
     }
     
+    /**
+     * Shows a list of dessert type recipes.
+     */
     public ArrayList<Recipe> listDessert()
     {
         ArrayList<Recipe> ds = new ArrayList<>();
@@ -197,6 +244,9 @@ public class RecipeBook
         return ds;
     }
     
+    /**
+     * Shows a list of appetizer type recipes.
+     */
     public ArrayList<Recipe> listApps()
     {
 
@@ -211,6 +261,9 @@ public class RecipeBook
         return apps;
     }
     
+    /**
+     * Shows a list of main dish type recipes.
+     */
     public ArrayList<Recipe> listMainDish()
     {
         ArrayList<Recipe> mD = new ArrayList<>();
@@ -223,6 +276,9 @@ public class RecipeBook
         return mD;
     }
     
+    /**
+     * Runs the program. Making it possible to operate on the terminal.
+     */
     public void run()
     {
         bookDetails();
@@ -236,6 +292,10 @@ public class RecipeBook
         System.out.println("Book closed.");
     }
     
+    /**
+     * Processes the user input, when the user inputs a text in the terminal, this
+     * method tells the program how to react.
+     */
     private boolean processCommand(Command command) 
     {
         boolean wantToQuit = false;
@@ -290,6 +350,9 @@ public class RecipeBook
     
     //QUIT:
     
+    /**
+     * quits the program.
+     */
     private boolean quit(Command command) 
     {
         if(command.hasSecondWord()) {
@@ -304,6 +367,12 @@ public class RecipeBook
      
     //ADD AND REMOVE:
     
+    /**
+     * Provides access to "add" related methods via terminal.
+     * processes the user input (second word after "add") and asks the user questions,
+     * or tells the user to input specific values. Depending on the answer, the
+     * program will register that inorder to fulfil the user's demand.
+     */
     private void add(Command command) {
         if(command.getWord2() == null)
         {
@@ -486,6 +555,12 @@ public class RecipeBook
         
     }
     
+    /**
+     * Provides access to "remove" related methods via terminal.
+     * processes the user input (second word after "remove") and tells the user to,
+     * identify what they want to remove. Depending on the answer, the program will
+     * register that inorder to fulfil the user's demand of removing a specific item.
+     */
     public void remove(Command command) {
         if(command.getWord2() == null)
         {
@@ -546,17 +621,27 @@ public class RecipeBook
     
     //SHOW AND HELP:
     
+    /**
+     * Displays the different availible commands that can be used in when the program
+     * is running (in the terminal).
+     */
     public void help()
     {
         System.out.println("LIST OF COMMANDS:");
         System.out.println("add/remove: recipe, step, ingredient, [add] scale");
-        System.out.println("show: recipes, types, units, ingredients, steps, best, appetizers, mainDishes, desserts");
+        System.out.println("show: recipe(s), types, units, ingredients, steps, best, appetizers, mainDishes, desserts");
         System.out.println("vote: up, down");
         System.out.println("edit: author, company, page, section");
         System.out.println("quit");
         System.out.println("help");
     }
     
+    /**
+     * Provides access to getters via terminal.
+     * processes the user input (second word after "show") and displays the information,
+     * stored as a result of other methods (ex. add or remove). In some possibilies,
+     * it asks a question to specify what exactly should be shown. 
+     */
     public void show(Command command)
     {
         if(command.getWord2() == null)
@@ -566,6 +651,26 @@ public class RecipeBook
         }
         
         
+        if (command.getWord2().equals("recipe")) 
+        {
+            if(recipes.size() > 0)
+            {
+                Scanner scanner = new Scanner(System.in);
+
+                System.out.print("What's the name of the recipe?");
+                String recipeName = scanner.nextLine();
+                Recipe target = searchRecipeName(recipeName);
+                
+                target.printRecipe();
+                
+                return;
+            }
+            else
+            {
+                System.out.println("no recipes found");
+            }
+            
+        }
         
         if (command.getWord2().equals("recipes")) 
         {
@@ -708,6 +813,12 @@ public class RecipeBook
     
     //VOTING SYSTEM:
     
+    /**
+     * Enables voting when operating via terminal.
+     * processes the user input (second word after "vote"), then demands the user to
+     * specify which recipe should be affected, and calls its increaseVote()
+     * method or the decreaseVote() depending on the user's initial second word.
+     */
     public void Vote(Command command)
     {
         if(command.getWord2() == null)
@@ -754,6 +865,11 @@ public class RecipeBook
         
     }
     
+    /**
+     * provides means of modification of the book's information when operating via terminal.
+     * processes the user input (second word after "edit") and calls the increaseVote()
+     * method or the decreaseVote() depending on the user's second word.
+     */
     public void edit(Command command)
     {
         if(command.getWord2() == null)

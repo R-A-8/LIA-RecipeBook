@@ -1,8 +1,9 @@
 
 /**
- * Write a description of class Command here.
+ * A Getter method central. Place to retreive information about the first and second
+ * word inputs.
  *
- * @author (your name)
+ * @Mohammad
  * @version (a version number or a date)
  */
 public class Command
@@ -20,26 +21,32 @@ public class Command
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Getter that returns the command word as string.
      */
     public String getWordCommand()
     {
         return wordCommand;
     }
     
+    /**
+     * Getter that returns the second word input as string.
+     */
     public String getWord2()
     {
         return Word2;
     }
     
+    /**
+     * Getter that returns a wordCommand equals null as a boolean.
+     */
     public boolean isUnknown()
     {
         return wordCommand == null;
     }
     
+    /**
+     * Getter that checks whether there is a second word input. 
+     */
     public boolean hasSecondWord()
     {
         return Word2 != null;

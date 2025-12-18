@@ -1,8 +1,8 @@
 
 /**
- * Enumeration Unit - écrire ici la description de l'énumération
+ * This enumeration is for the different units of mesurement for an ingredient.
  *
- * @author (votre nom)
+ * @Mohammad Al Mousa
  * @version (numéro de version ou date)
  */
 public enum Unit

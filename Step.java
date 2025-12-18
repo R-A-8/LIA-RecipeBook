@@ -28,10 +28,7 @@ public class Step
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Getter that returns the instruction string.
      */
     
     
@@ -40,6 +37,9 @@ public class Step
         return instruction;
     }
     
+    /**
+     * Getter that returns the order integer.
+     */
     public int getOrder()
     {
         return order;

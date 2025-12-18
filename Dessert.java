@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * Décrivez votre classe Desserts ici.
+ * Class that contains information and functionality related to a dessert recipe.
  *
  * @Rend A.
  * @version (un numéro de version ou une date)
@@ -23,18 +23,9 @@ public class Dessert extends Recipe
         
     }
 
-   /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+    /**
+     * Indicates how sweet or bitter a Dessert is. Depends on sweetnessLevel variable.
      */
-    public void listSugarBased()
-    {
-        //tbd
-        
-    }
-    
    public void giveSweetnessLevel(){
        if(sweetnessLevel < 0 && sweetnessLevel > 10)
        {
@@ -51,6 +42,9 @@ public class Dessert extends Recipe
        }
    }
    
+   /**
+     * Displays the properties of the Dessert.
+     */
    public void showProperties() {
         System.out.println("Dessert: " + getName());
         System.out.println("Sweetness level: " + sweetnessLevel + "/10");

@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * The test class AppetizerTest.
- *
- * @author  (your name)
- * @version (a version number or a date)
  */
 public class AppetizerTest
 {

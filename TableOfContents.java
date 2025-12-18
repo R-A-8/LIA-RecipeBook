@@ -1,9 +1,6 @@
 
 /**
- * Enumeration TableOfContents - écrire ici la description de l'énumération
- *
- * @author (votre nom)
- * @version (numéro de version ou date)
+ * List of types of recipes.
  */
 public enum TableOfContents
 {

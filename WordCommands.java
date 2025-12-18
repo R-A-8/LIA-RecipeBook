@@ -1,8 +1,8 @@
 
 /**
- * Write a description of class WordCommands here.
+ * Hosts all commands words that helpp the program function on the terminal.
  *
- * @author (your name)
+ * @Mohammad
  * @version (a version number or a date)
  */
 public class WordCommands
@@ -17,17 +17,10 @@ public class WordCommands
     /**
      * Constructor for objects of class WordCommands
      */
-    public WordCommands()
-    {
-        // initialise instance variables
-        
-    }
+    public WordCommands(){}
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Checks whether the user input is a command word or not.
      */
     public boolean isCommand(String aString)
     {
@@ -42,6 +35,9 @@ public class WordCommands
         return false;
     }
     
+    /**
+     * Shows all command words.
+     */
     public void showAll()
     {
         for(String command: availibleCommands)

@@ -1,5 +1,10 @@
 
-
+/**
+ * Class that contains information and functionality related to a appetizer recipe.
+ *
+ * @Mohammad
+ * @version (un numéro de version ou une date)
+ */
 public class Appetizer extends Recipe
 {
     // instance variables - replace the example below with your own
@@ -22,10 +27,7 @@ public class Appetizer extends Recipe
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Indicates whether the appetizer has flavor or not depending on the flavorLevel variable.
      */
     public void listFlavor()
     {
@@ -51,6 +53,9 @@ public class Appetizer extends Recipe
         }
     }
     
+    /**
+     * Displays the properties of this appetizer.
+     */
     public void showProperties() {
         System.out.println("Appatizer: " + getName());
         System.out.println("Flavor level: " + flavorLevel + "/10");

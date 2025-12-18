@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
 /**
- * Write a description of class Parser here.
+ * This class is essential to be able to use this project in the terminal. It is
+ * the scanner. Detects the users input. It can register two words.
  *
- * @author (your name)
+ * @Mohammad
  * @version (a version number or a date)
  */
 public class Parser
@@ -21,10 +22,7 @@ public class Parser
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Processes the input and creates a new scanner.
      */
     public Command getCommand()
     {
@@ -56,6 +54,9 @@ public class Parser
         }
     }
     
+    /**
+     * Shows the commands words.
+     */
     public void showCommands()
     {
         commands.showAll();

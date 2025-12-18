@@ -5,10 +5,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 /**
- * Write a description of class Recipes here.
+ * This class acts as somewhat a crossroads. It's a parent class that manages step/ingredient
+ * creation as well as the voting system functionality. 
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @Mohammad Al Mousa
  */
 public class Recipe
 {
@@ -32,19 +32,27 @@ public class Recipe
     private Step step;
     private Unit unit;
     
+    /**
+     * Constructor for objects of class RecipeBook.
+     */
     public Recipe(String name, int serving)
     {
         //list initialization
         this.name = name;
         this.serving = serving;
     }
-    
+
+    /**
+     * Adds step to recipe.
+     */
     public void addStep(Step step)
     {
         steps.add(step);   
     }
     
-    
+    /**
+     * Remove step from recipe.
+     */
     public void removeStep(String instruction)
     {
         
@@ -68,6 +76,9 @@ public class Recipe
         }
     }
     
+    /**
+     * Remove step from recipe.
+     */
     public Step searchStep(String instruction) {
         for (Step s : steps) {
             if (s.getInstruction().equalsIgnoreCase(instruction)) {
@@ -77,7 +88,9 @@ public class Recipe
         return null;
     }
     
-    
+    /**
+     * Displays the amount of units of mesurement availible.
+     */
     public void showUnits()
     {
         for(Unit unit : unit.values())
@@ -86,6 +99,9 @@ public class Recipe
         }
     }
     
+    /**
+     * Add an already existing ingredient object to the ingredients arraylist.
+     */
     public void addIngredient(Ingredient ingredientToAdd)
     {
         for (Ingredient ingredient : ingredients) {
@@ -97,6 +113,10 @@ public class Recipe
         ingredients.add(ingredientToAdd);
     }
 
+    
+    /**
+     * Remove an already existing ingredient object from the ingredients arraylist.
+     */
     public void removeIngredient(String ingredientName)
     {
         
@@ -120,6 +140,9 @@ public class Recipe
         }
     }
     
+    /**
+     * Search for an ingredient by name inside a specific recipe.
+     */
     public Ingredient searchIngredient(String name) {
         for (Ingredient ingredient : ingredients) {
             if (ingredient.getName().equalsIgnoreCase(name)) {
@@ -129,11 +152,17 @@ public class Recipe
         return null;
     }
     
+    /**
+     * Adds 1 to the int value votes.
+     */
     public void increaseVote()
     {
         votes++;
     }  
     
+    /**
+     * Subtracts 1 from the int value votes.
+     */
     public void decreaseVote()
     {
         votes--;
@@ -141,13 +170,17 @@ public class Recipe
 
     //Getters below:
 
-    
+    /**
+     * Subtracts 1 from the int value votes.
+     */
     public int getVotes()
     {
         return votes;
     }
     
-    
+    /**
+     * Displays the full infromation about a recipe.
+     */
     public void printRecipe()
     {
         System.out.println("Title: " + name);
@@ -156,7 +189,6 @@ public class Recipe
         
         System.out.println("\n" + "Ingredients:");
         for(Ingredient i : ingredients){
-            //System.out.print("-" + i.getAmount() + i.getUnit() + " of " + i.getName());
             System.out.println("-" + i.getAmount() + i.getUnit() + " of " + i.getName() + "\n");
         }
         
@@ -176,11 +208,17 @@ public class Recipe
 
     }
     
+    /**
+     * Getter that returns name String.
+     */
     public String getName()
     {
         return name;
     }
     
+    /**
+     * Lists all ingredients and information about each.
+     */
     public void listIngredients()
     {
         for(int i = 0; i < ingredients.size(); i++)
@@ -191,6 +229,10 @@ public class Recipe
         }
     }
     
+    /**
+     * Lists all steps inside of a recipe.
+     */
+
     public void listSteps()
     {
         for(int i = 0; i < steps.size(); i++)
@@ -199,6 +241,10 @@ public class Recipe
         }
     }
     
+    /**
+     * Shows the properties of a recipe.
+     */
+
     public void showProperties() {
         System.out.println("Recipe: " + name);
     }

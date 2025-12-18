@@ -1,10 +1,10 @@
 
 
 /**
- * Write a description of class MainDish here.
+ * Class that contains information and functionality related to a main dish recipe.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @Mohammad
+ * @version (un numéro de version ou une date)
  */
 public class MainDish extends Recipe
 {
@@ -29,10 +29,7 @@ public class MainDish extends Recipe
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Indicates how spicy a main dish is depending on its spiceLevel variable.
      */
     public void listSpicy()
     {
@@ -58,6 +55,9 @@ public class MainDish extends Recipe
         }
     }
     
+    /**
+     * Displays the properties of the main dish.
+     */
     public void showProperties() {
         System.out.println("Main dish: " + getName());
         System.out.println("Spicy level: " + spiceLevel + "/10");

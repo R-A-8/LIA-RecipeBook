@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test;
 
 /**
  * The test class MainDishTest.
- *
- * @author  (your name)
- * @version (a version number or a date)
  */
 public class MainDishTest
 {
