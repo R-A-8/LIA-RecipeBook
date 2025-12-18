@@ -22,10 +22,8 @@ public class Dessert extends Recipe
         this.isVegetarian = isVegetarian;
         
     }
-
     
-
-   public void giveSweetnessLevel(){
+    public void giveSweetnessLevel(){
        if(sweetnessLevel < 0 && sweetnessLevel > 10)
        {
            System.out.println("invalid sweetness level.");
