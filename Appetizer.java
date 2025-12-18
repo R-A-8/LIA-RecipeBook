@@ -12,7 +12,6 @@ public class Appetizer extends Recipe
     
     private String name;
     
-    private boolean isGlutenFree;
     private boolean isVegetarian;
 
     /**

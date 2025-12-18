@@ -23,9 +23,11 @@ public class Dessert extends Recipe
         
     }
 
+
     /**
      * Indicates how sweet or bitter a Dessert is. Depends on sweetnessLevel variable.
      */
+
    public void giveSweetnessLevel(){
        if(sweetnessLevel < 0 && sweetnessLevel > 10)
        {
