@@ -26,7 +26,7 @@ public class Appetizer extends Recipe
     }
 
     /**
-     * Indicates whether the appetizer has flavor or not depending on the flavorLevel variable.
+     * Indicates the flavor level from 1 to 10.
      */
     public void listFlavor()
     {

@@ -23,6 +23,9 @@ public class Dessert extends Recipe
         
     }
     
+    /**
+     * Indicates the sweetness of a dessert from 1 to 10. 
+     */
     public void giveSweetnessLevel(){
        if(sweetnessLevel < 0 && sweetnessLevel > 10)
        {

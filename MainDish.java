@@ -29,7 +29,7 @@ public class MainDish extends Recipe
     }
 
     /**
-     * Indicates how spicy a main dish is depending on its spiceLevel variable.
+     * Indicates the spiciness from 1 to 10.
      */
     public void listSpicy()
     {
